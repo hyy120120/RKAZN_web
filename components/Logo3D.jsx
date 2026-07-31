@@ -66,7 +66,7 @@ export default function Logo3D() {
     group.add(meshGroup); // outer group ke andar inner group daala
 
     // Initial Apple style tilt
-    group.rotation.x = -0.18;
+    group.rotation.x = 0;
 
     // Hero Scale
     group.scale.setScalar(0.012);
