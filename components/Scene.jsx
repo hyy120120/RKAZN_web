@@ -3,6 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 import {
   Environment,
+  Lightformer,
   Float,
   ContactShadows,
   OrbitControls,
@@ -18,6 +19,7 @@ import Logo3D from "./Logo3D";
 export default function Scene() {
   return (
     <Canvas
+      frameloop="always"
       shadows
       dpr={[1, 2]}
       camera={{
@@ -57,8 +59,35 @@ export default function Scene() {
         intensity={2}
       />
 
-      {/* HDR Reflection */}
-      <Environment preset="warehouse" />
+      {/* Studio-style reflections — generated locally, no internet fetch needed */}
+      <Environment resolution={256}>
+        <Lightformer
+          intensity={4}
+          color="white"
+          position={[0, 5, -6]}
+          scale={[10, 2, 1]}
+        />
+        <Lightformer
+          intensity={3}
+          color="white"
+          position={[-6, 1, 4]}
+          scale={[1, 10, 1]}
+          rotation-y={Math.PI / 2}
+        />
+        <Lightformer
+          intensity={3}
+          color="#8fd3ff"
+          position={[6, 1, 4]}
+          scale={[1, 10, 1]}
+          rotation-y={-Math.PI / 2}
+        />
+        <Lightformer
+          intensity={2}
+          color="white"
+          position={[0, -5, 4]}
+          scale={[10, 1, 1]}
+        />
+      </Environment>
 
       {/* Floating Logo */}
       <Float
