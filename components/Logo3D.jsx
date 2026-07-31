@@ -23,43 +23,49 @@ export default function Logo3D() {
     });
 
     paths.forEach((path, pathIndex) => {
-      const material = new THREE.MeshPhysicalMaterial({
-  color: new THREE.Color(path.color),
-  metalness: 0.9,
-  roughness: 0.22,
-  clearcoat: 1,
-  clearcoatRoughness: 0.08,
-  envMapIntensity: 2.2,
-  ior: 1.5,
-  transmission: 0,
-  reflectivity: 1,
-  side: THREE.DoubleSide,
-  polygonOffset: true,
-  polygonOffsetFactor: -pathIndex,
-  polygonOffsetUnits: -pathIndex,
-});
+  const color = new THREE.Color(path.color);
 
-      const shapes = SVGLoader.createShapes(path);
+  // Ye chhota light-gray inlay (A ke andar wala triangle) hai —
+  // baaki dark letter-body paths se alag treat karna hai
+  const isInlay = color.r > 0.6 && color.g > 0.6 && color.b > 0.6;
 
-      shapes.forEach((shape) => {
-        const geometry = new THREE.ExtrudeGeometry(shape, {
-          depth: 12,
-          bevelEnabled: true,
-          bevelThickness: 0.8,
-          bevelSize: 0.35,
-          bevelSegments: 3,
-          curveSegments: 6,
-        });
+  const material = new THREE.MeshPhysicalMaterial({
+    color,
+    metalness: 0.9,
+    roughness: 0.22,
+    clearcoat: 1,
+    clearcoatRoughness: 0.08,
+    envMapIntensity: 2.2,
+    ior: 1.5,
+    transmission: 0,
+    reflectivity: 1,
+    side: THREE.DoubleSide,
+    polygonOffset: true,
+    polygonOffsetFactor: -pathIndex,
+    polygonOffsetUnits: -pathIndex,
+  });
 
-        geometry.computeVertexNormals();
+  const shapes = SVGLoader.createShapes(path);
 
-        const mesh = new THREE.Mesh(geometry, material);
-        mesh.castShadow = true;
-        mesh.receiveShadow = true;
-
-        meshGroup.add(mesh); // <-- ab meshGroup me add
-      });
+  shapes.forEach((shape) => {
+    const geometry = new THREE.ExtrudeGeometry(shape, {
+      depth: isInlay ? 12.5 : 12,
+      bevelEnabled: !isInlay,
+      bevelThickness: 0.8,
+      bevelSize: 0.35,
+      bevelSegments: 3,
+      curveSegments: 6,
     });
+
+    geometry.computeVertexNormals();
+
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.castShadow = true;
+    mesh.receiveShadow = true;
+
+    meshGroup.add(mesh);
+  });
+});
 
     // Center complete logo (unscaled inner group ke andar)
     const box = new THREE.Box3().setFromObject(meshGroup);
