@@ -11,7 +11,7 @@ export default function Footer() {
       {/* Right */}
       <div className="socials">
         <a
-          href="https://www.linkedin.com/"
+          href="https://www.linkedin.com/in/rudra-kapadia-02bb642b9"
           target="_blank"
           rel="noopener noreferrer"
         >
