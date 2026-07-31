@@ -33,7 +33,7 @@ export default function Scene() {
       }}
     >
       {/* Transparent Background */}
-      <color attach="background" args={["#000000"]} />
+       
 
       {/* Ambient */}
       <ambientLight intensity={1.2} />

@@ -69,7 +69,7 @@ export default function Logo3D() {
     group.rotation.x = -0.18;
 
     // Hero Scale
-    group.scale.setScalar(0.045);
+    group.scale.setScalar(0.012);
     group.scale.y *= -1;
 
     return group;
