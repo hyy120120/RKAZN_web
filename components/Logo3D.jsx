@@ -13,39 +13,26 @@ export default function Logo3D() {
   const svg = useLoader(SVGLoader, "/logo.svg");
 
   const logo = useMemo(() => {
-    const group = new THREE.Group();
+    const meshGroup = new THREE.Group(); // meshes yahan add honge
+    const group = new THREE.Group();     // ye outer wrapper scale/rotate karega
 
     // Remove white background paths only
     const paths = svg.paths.filter((path) => {
       const color = new THREE.Color(path.color);
-
-      return !(
-        color.r > 0.98 &&
-        color.g > 0.98 &&
-        color.b > 0.98
-      );
+      return !(color.r > 0.98 && color.g > 0.98 && color.b > 0.98);
     });
 
     paths.forEach((path) => {
       const material = new THREE.MeshPhysicalMaterial({
         color: new THREE.Color(path.color),
-
         metalness: 0.9,
-
         roughness: 0.22,
-
         clearcoat: 1,
-
         clearcoatRoughness: 0.08,
-
         envMapIntensity: 2.2,
-
         ior: 1.5,
-
         transmission: 0,
-
         reflectivity: 1,
-
         side: THREE.DoubleSide,
       });
 
@@ -54,44 +41,29 @@ export default function Logo3D() {
       shapes.forEach((shape) => {
         const geometry = new THREE.ExtrudeGeometry(shape, {
           depth: 12,
-
           bevelEnabled: true,
-
           bevelThickness: 0.8,
-
           bevelSize: 0.35,
-
           bevelSegments: 3,
-
           curveSegments: 6,
         });
 
         geometry.computeVertexNormals();
 
-        const mesh = new THREE.Mesh(
-          geometry,
-          material
-        );
-
+        const mesh = new THREE.Mesh(geometry, material);
         mesh.castShadow = true;
         mesh.receiveShadow = true;
 
-        group.add(mesh);
+        meshGroup.add(mesh); // <-- ab meshGroup me add
       });
     });
 
-    // Center complete logo
-    const box = new THREE.Box3().setFromObject(group);
+    // Center complete logo (unscaled inner group ke andar)
+    const box = new THREE.Box3().setFromObject(meshGroup);
+    const center = box.getCenter(new THREE.Vector3());
+    meshGroup.position.set(-center.x, -center.y, -center.z);
 
-    const center = box.getCenter(
-      new THREE.Vector3()
-    );
-
-    group.position.set(
-      -center.x,
-      -center.y,
-      -center.z
-    );
+    group.add(meshGroup); // outer group ke andar inner group daala
 
     // Initial Apple style tilt
     group.rotation.x = -0.18;
