@@ -6,17 +6,17 @@ export default function Header() {
       {/* Logo */}
       <div className="mark">
         <span className="dot"></span>
-        <span>RK</span>
+        <span>RKAZN</span>
       </div>
 
       {/* Role */}
       <div className="header-group">
         <span className="header-role">
-          Full Stack Developer
+          E-Mail
         </span>
 
         <span className="header-contact">
-          rudrakapadia@gmail.com
+          info@rkazn.com  
         </span>
       </div>
 

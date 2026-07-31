@@ -36,40 +36,38 @@ export default function Scene() {
        
 
       {/* Ambient */}
-      <ambientLight intensity={1.2} />
+      <ambientLight intensity={1.8} />
 
       {/* Main Light */}
       <directionalLight
         castShadow
         position={[8, 10, 12]}
-        intensity={3}
+        intensity={4}
         shadow-mapSize-width={2048}
         shadow-mapSize-height={2048}
       />
 
       {/* Fill Light */}
       <directionalLight
-        position={[-10, 6, -8]}
-        intensity={1.5}
+        position={[-10, 6, -8]} intensity={1.5}
       />
 
       {/* Rim Light */}
       <pointLight
-        position={[0, 8, 10]}
-        intensity={2}
+        position={[0, 8, 10]} intensity={3}
       />
 
       {/* Studio-style reflections — generated locally, no internet fetch needed */}
       <Environment resolution={256}>
         <Lightformer
-          intensity={4}
-          color="white"
-          position={[0, 5, -6]}
-          scale={[10, 2, 1]}
-        />
+           intensity={4}
+           color="#f2ede2"
+           position={[0, 5, -6]}
+           scale={[10, 2, 1]}
+         />
         <Lightformer
           intensity={3}
-          color="white"
+          color="#f2ede2"
           position={[-6, 1, 4]}
           scale={[1, 10, 1]}
           rotation-y={Math.PI / 2}

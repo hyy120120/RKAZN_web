@@ -23,19 +23,26 @@ export default function Logo3D() {
     });
 
     paths.forEach((path, pathIndex) => {
-  const color = new THREE.Color(path.color);
+  const baseColor = new THREE.Color(path.color);
 
-  // Ye chhota light-gray inlay (A ke andar wala triangle) hai —
-  // baaki dark letter-body paths se alag treat karna hai
-  const isInlay = color.r > 0.6 && color.g > 0.6 && color.b > 0.6;
+  // Saturation check — teal accent ka saturation zyada hai, gray/black letters ka ~0
+  const hsl = { h: 0, s: 0, l: 0 };
+  baseColor.getHSL(hsl);
+  const isAccent = hsl.s > 0.15;
+
+  // Letters: asli dark/black color waisa hi rakho (brand accuracy)
+  // Accent (teal): thoda saturate + bright karke pop dena
+  const displayColor = isAccent
+    ? baseColor.clone().offsetHSL(0, 0.15, 0.08)
+    : baseColor.clone();
 
   const material = new THREE.MeshPhysicalMaterial({
-    color,
-    metalness: 0.9,
-    roughness: 0.22,
+    color: displayColor,
+    metalness: isAccent ? 0.6 : 0.85,
+    roughness: isAccent ? 0.18 : 0.25,
     clearcoat: 1,
-    clearcoatRoughness: 0.08,
-    envMapIntensity: 2.2,
+    clearcoatRoughness: 0.06,
+    envMapIntensity: isAccent ? 2.5 : 3.2,
     ior: 1.5,
     transmission: 0,
     reflectivity: 1,
@@ -49,13 +56,13 @@ export default function Logo3D() {
 
   shapes.forEach((shape) => {
     const geometry = new THREE.ExtrudeGeometry(shape, {
-      depth: isInlay ? 12.5 : 12,
-      bevelEnabled: !isInlay,
-      bevelThickness: 0.8,
-      bevelSize: 0.35,
-      bevelSegments: 3,
-      curveSegments: 6,
-    });
+  depth: 22,
+  bevelEnabled: true,
+  bevelThickness: 1.4,
+  bevelSize: 0.5,
+  bevelSegments: 4,
+  curveSegments: 6,
+});
 
     geometry.computeVertexNormals();
 
