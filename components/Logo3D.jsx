@@ -78,34 +78,8 @@ export default function Logo3D() {
   useFrame((state, delta) => {
     if (!groupRef.current) return;
 
-    // Smooth Auto Rotation
+    // Sirf horizontal (Y-axis) rotation — kuch aur move nahi hoga
     groupRef.current.rotation.y += delta * 0.6;
-
-    // Floating
-    groupRef.current.position.y =
-      Math.sin(state.clock.elapsedTime * 1.4) *
-      0.35;
-
-    // Mouse Tilt
-    const targetX =
-      -0.18 + mouse.y * 0.12;
-
-    const targetZ =
-      mouse.x * 0.08;
-
-    groupRef.current.rotation.x =
-      THREE.MathUtils.lerp(
-        groupRef.current.rotation.x,
-        targetX,
-        0.08
-      );
-
-    groupRef.current.rotation.z =
-      THREE.MathUtils.lerp(
-        groupRef.current.rotation.z,
-        targetZ,
-        0.08
-      );
   });
 
   return (

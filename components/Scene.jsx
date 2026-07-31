@@ -89,14 +89,8 @@ export default function Scene() {
         />
       </Environment>
 
-      {/* Floating Logo */}
-      <Float
-        speed={1.8}
-        rotationIntensity={0}
-        floatIntensity={0.7}
-      >
-        <Logo3D />
-      </Float>
+      {/* Logo */}
+      <Logo3D />
 
       {/* Soft Shadow */}
       <ContactShadows
