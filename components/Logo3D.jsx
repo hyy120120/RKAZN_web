@@ -61,9 +61,9 @@ export default function Logo3D() {
 
           bevelSize: 0.35,
 
-          bevelSegments: 12,
+          bevelSegments: 3,
 
-          curveSegments: 32,
+          curveSegments: 6,
         });
 
         geometry.computeVertexNormals();
