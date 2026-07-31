@@ -1,0 +1,269 @@
+:root {
+  --bg: #0a0806;
+  --fg: #f5f3ef;
+  --fg-dim: rgba(245, 243, 239, 0.72);
+  --overlay: rgba(0, 0, 0, 0.25);
+
+  --gap-lg: clamp(24px, 4vw, 64px);
+  --edge: clamp(20px, 4vw, 40px);
+
+  --tracking: 1.5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  overflow: hidden;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* ================= BACKGROUND ================= */
+
+.scene-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.scene-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: zoom 40s ease-in-out infinite alternate;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 45%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--overlay);
+}
+
+.grain {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 3;
+
+  opacity: 0.04;
+
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+
+  animation: grain 0.6s steps(4) infinite;
+}
+
+@keyframes grain {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-2%, 1%);
+  }
+
+  50% {
+    transform: translate(2%, -2%);
+  }
+
+  75% {
+    transform: translate(-1%, 2%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* ================= LOGO ================= */
+
+.logo-wrapper {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: min(46vw, 700px);
+  height: min(46vw, 700px);
+
+  z-index: 5;
+
+  pointer-events: auto;
+}
+
+.logo-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* ================= HEADER ================= */
+
+.site-header {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 20;
+
+  padding: var(--edge);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  font-size: 11px;
+  letter-spacing: var(--tracking);
+  text-transform: uppercase;
+}
+
+.mark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: white;
+}
+
+.header-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header-contact {
+  color: var(--fg-dim);
+}
+
+.header-nav {
+  display: flex;
+  gap: var(--gap-lg);
+}
+
+.header-nav a {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.header-nav a:hover {
+  opacity: 0.6;
+}
+
+/* ================= FOOTER ================= */
+
+.site-footer {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 20;
+
+  padding: var(--edge);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 11px;
+  letter-spacing: var(--tracking);
+  text-transform: uppercase;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.socials a {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.socials a:hover {
+  opacity: 0.6;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .logo-wrapper {
+    width: 340px;
+    height: 340px;
+  }
+
+  .site-header {
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+  }
+
+  .header-nav {
+    gap: 24px;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 24px;
+  }
+}

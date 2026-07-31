@@ -1,0 +1,326 @@
+Without bg : <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rudra Kapadia — Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --bg: #0a0806;
+    --fg: #f5f3ef;
+    --fg-dim: rgba(245, 243, 239, 0.72);
+    --overlay: rgba(0, 0, 0, 0.25);
+    --gap-lg: clamp(24px, 4vw, 64px);
+    --edge: clamp(20px, 4vw, 40px);
+    --tracking: 1.5px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    background: var(--bg);
+  }
+
+  body {
+    font-family: 'IBM Plex Mono', 'Space Mono', monospace;
+    color: var(--fg);
+    overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  /* Cinematic motion-blur background, built in CSS: streaked warm-toned
+     bands drifting horizontally like a train window, layered with a
+     brighter defocused band and a slow grain flicker. No external video
+     dependency, so it always renders. */
+
+  .scene {
+    position: absolute;
+    inset: -3%;
+    filter: brightness(0.82) contrast(0.92);
+  }
+
+  .scene img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    animation: kenburns 40s ease-in-out infinite alternate;
+  }
+
+  @keyframes kenburns {
+    from { transform: scale(1.02) translate(0, 0); }
+    to   { transform: scale(1.08) translate(-1%, -1%); }
+  }
+
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 45%, rgba(0,0,0,0.55) 100%);
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--overlay);
+  }
+
+  .grain {
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    animation: grain-shift 0.6s steps(4) infinite;
+  }
+
+  @keyframes grain-shift {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(-2%, 1%); }
+    50%  { transform: translate(1%, -2%); }
+    75%  { transform: translate(-1%, 2%); }
+    100% { transform: translate(0, 0); }
+  }
+
+  /* ---------- Header ---------- */
+
+  .site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--gap-lg);
+    padding: var(--edge);
+    font-size: 11px;
+    letter-spacing: var(--tracking);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .site-header > * {
+    opacity: 0.92;
+  }
+
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .mark .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--fg);
+    display: inline-block;
+  }
+
+  .header-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    line-height: 1.6;
+  }
+
+  .header-role {
+    color: var(--fg);
+  }
+
+  .header-contact {
+    color: var(--fg-dim);
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gap-lg);
+  }
+
+  .header-nav a {
+    color: var(--fg);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .header-nav a:hover,
+  .header-nav a:focus-visible {
+    opacity: 0.6;
+  }
+
+  .header-nav a:focus-visible {
+    outline: 1px solid var(--fg-dim);
+    outline-offset: 4px;
+  }
+
+  /* ---------- Footer ---------- */
+
+  .site-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: var(--edge);
+    font-size: 11px;
+    letter-spacing: var(--tracking);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .site-footer .name {
+    color: var(--fg);
+  }
+
+  .site-footer .socials {
+    display: flex;
+    gap: 8px;
+    color: var(--fg);
+  }
+
+  .site-footer .socials a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .site-footer .socials a:hover,
+  .site-footer .socials a:focus-visible {
+    opacity: 0.6;
+  }
+
+  .site-footer .socials span {
+    opacity: 0.5;
+  }
+
+  /* ---------- Load-in animation ---------- */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fade-up 0.8s ease forwards;
+  }
+
+  .site-header { animation-delay: 0.05s; }
+  .site-footer { animation-delay: 0.2s; }
+
+  @keyframes fade-up {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ---------- Responsive ---------- */
+
+  @media (max-width: 820px) {
+    .site-header {
+      flex-wrap: wrap;
+      row-gap: 18px;
+    }
+
+    .header-nav {
+      gap: 20px;
+      order: 3;
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .header-group:nth-of-type(2) {
+      order: 2;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .site-header,
+    .site-footer {
+      font-size: 10px;
+    }
+
+    .site-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="scene">
+      <img src="hero-bg.jpg" alt="" role="presentation">
+    </div>
+    <div class="vignette"></div>
+    <div class="overlay"></div>
+    <div class="grain"></div>
+
+    <header class="site-header reveal">
+      <div class="mark">
+        <span class="dot"></span>
+        <span>RK</span>
+      </div>
+
+      <div class="header-group">
+        <span class="header-role">Full Stack Developer</span>
+        <span class="header-contact">rudrakapadia@gmail.com</span>
+      </div>
+
+      <div class="header-group">
+        <span class="header-role">IND +91</span>
+        <span class="header-contact">9574874229</span>
+      </div>
+
+      <nav class="header-nav" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
+
+    <footer class="site-footer reveal">
+      <span class="name">Rudra Kapadia</span>
+      <span class="socials">
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <span>/</span>
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+      </span>
+    </footer>
+  </section>
+
+</body>
+</html>
