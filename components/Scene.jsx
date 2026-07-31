@@ -5,7 +5,7 @@ import {
   Environment,
   Lightformer,
   Float,
-  ContactShadows,
+  // ContactShadows,
   OrbitControls,
 } from "@react-three/drei";
 
@@ -93,13 +93,13 @@ export default function Scene() {
       <Logo3D />
 
       {/* Soft Shadow */}
-      <ContactShadows
+      {/* <ContactShadows
         position={[0, -7, 0]}
         opacity={0.28}
         blur={3}
         scale={25}
         far={20}
-      />
+      /> */}
 
       {/* Disable User Rotation */}
       <OrbitControls

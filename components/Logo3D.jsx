@@ -19,22 +19,25 @@ export default function Logo3D() {
     // Remove white background paths only
     const paths = svg.paths.filter((path) => {
       const color = new THREE.Color(path.color);
-      return !(color.r > 0.98 && color.g > 0.98 && color.b > 0.98);
+      return !(color.r > 0.99 && color.g > 0.99 && color.b > 0.99);
     });
 
-    paths.forEach((path) => {
+    paths.forEach((path, pathIndex) => {
       const material = new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color(path.color),
-        metalness: 0.9,
-        roughness: 0.22,
-        clearcoat: 1,
-        clearcoatRoughness: 0.08,
-        envMapIntensity: 2.2,
-        ior: 1.5,
-        transmission: 0,
-        reflectivity: 1,
-        side: THREE.DoubleSide,
-      });
+  color: new THREE.Color(path.color),
+  metalness: 0.9,
+  roughness: 0.22,
+  clearcoat: 1,
+  clearcoatRoughness: 0.08,
+  envMapIntensity: 2.2,
+  ior: 1.5,
+  transmission: 0,
+  reflectivity: 1,
+  side: THREE.DoubleSide,
+  polygonOffset: true,
+  polygonOffsetFactor: -pathIndex,
+  polygonOffsetUnits: -pathIndex,
+});
 
       const shapes = SVGLoader.createShapes(path);
 
