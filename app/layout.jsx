@@ -1,5 +1,5 @@
 import "./globals.css";
-
+const siteUrl = "https://rkazn.com";
 export const metadata = {
   title: "Rudra Kapadia",
   description: "Portfolio",

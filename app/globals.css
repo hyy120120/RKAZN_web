@@ -242,6 +242,25 @@ body {
   opacity: 0.6;
 }
 
+.reveal-line {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.reveal-inner {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+  animation: revealUp 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes revealUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 /* ================= MOBILE ================= */
 
 @media (max-width: 768px) {

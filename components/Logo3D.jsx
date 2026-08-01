@@ -5,6 +5,19 @@ import { SVGLoader } from "three/examples/jsm/loaders/SVGLoader";
 import * as THREE from "three";
 import { useMemo, useRef } from "react";
 
+// SVG canvas ka pura white background rectangle — ise hamesha discard karna hai
+const isBackgroundWhite = (c) => c.r > 0.98 && c.g > 0.98 && c.b > 0.98;
+
+// Halka/off-white shape jo asal me letter ke andar ka "hole" (khaali jagah) represent karta hai
+const isHoleColor = (c) =>
+  !isBackgroundWhite(c) && c.r > 0.85 && c.g > 0.85 && c.b > 0.85;
+
+function getShapeBounds(shape) {
+  const box = new THREE.Box2();
+  shape.getPoints().forEach((pt) => box.expandByPoint(pt));
+  return box;
+}
+
 export default function Logo3D() {
   const groupRef = useRef();
 
@@ -14,65 +27,87 @@ export default function Logo3D() {
 
   const logo = useMemo(() => {
     const meshGroup = new THREE.Group(); // meshes yahan add honge
-    const group = new THREE.Group();     // ye outer wrapper scale/rotate karega
+    const group = new THREE.Group(); // ye outer wrapper scale/rotate karega
 
-    // Remove white background paths only
-    const paths = svg.paths.filter((path) => {
-      const color = new THREE.Color(path.color);
-      return !(color.r > 0.99 && color.g > 0.99 && color.b > 0.99);
+    // Har path ke shapes nikaal lo, aur color ke hisaab se category tay karo
+    const parsed = svg.paths
+      .map((path) => ({
+        path,
+        color: new THREE.Color(path.color),
+        shapes: SVGLoader.createShapes(path),
+      }))
+      .filter((entry) => !isBackgroundWhite(entry.color)); // pura canvas background hata do
+
+    // Hole-color wale shapes ko unke sahi "parent" solid shape me real hole ke roop me jod do
+    parsed.forEach((entry) => {
+      if (!isHoleColor(entry.color)) return;
+
+      entry.shapes.forEach((holeShape) => {
+        const holeBounds = getShapeBounds(holeShape);
+
+        let bestParent = null;
+        let bestArea = Infinity;
+
+        parsed.forEach((candidate) => {
+          if (isHoleColor(candidate.color)) return; // dusra hole parent nahi ban sakta
+
+          candidate.shapes.forEach((solidShape) => {
+            const bounds = getShapeBounds(solidShape);
+            const area = (bounds.max.x - bounds.min.x) * (bounds.max.y - bounds.min.y);
+
+            if (bounds.containsBox(holeBounds) && area < bestArea) {
+              bestArea = area;
+              bestParent = solidShape;
+            }
+          });
+        });
+
+        if (bestParent) {
+          bestParent.holes.push(new THREE.Path(holeShape.getPoints()));
+        }
+      });
     });
 
-    paths.forEach((path, pathIndex) => {
-  const baseColor = new THREE.Color(path.color);
+    // Ab sirf solid (non-hole) shapes ko mesh banao — hole shapes khud render nahi honge,
+    // unka kaam sirf upar wale parent me "cut" karna tha
+    parsed.forEach(({ path, color, shapes }, pathIndex) => {
+      if (isHoleColor(color)) return;
 
-  // Saturation check — teal accent ka saturation zyada hai, gray/black letters ka ~0
-  const hsl = { h: 0, s: 0, l: 0 };
-  baseColor.getHSL(hsl);
-  const isAccent = hsl.s > 0.15;
+      const material = new THREE.MeshPhysicalMaterial({
+        color,
+        metalness: 0.9,
+        roughness: 0.22,
+        clearcoat: 1,
+        clearcoatRoughness: 0.08,
+        envMapIntensity: 2.2,
+        ior: 1.5,
+        transmission: 0,
+        reflectivity: 1,
+        side: THREE.DoubleSide,
+        polygonOffset: true,
+        polygonOffsetFactor: -pathIndex,
+        polygonOffsetUnits: -pathIndex,
+      });
 
-  // Letters: asli dark/black color waisa hi rakho (brand accuracy)
-  // Accent (teal): thoda saturate + bright karke pop dena
-  const displayColor = isAccent
-    ? baseColor.clone().offsetHSL(0, 0.15, 0.08)
-    : baseColor.clone();
+      shapes.forEach((shape) => {
+        const geometry = new THREE.ExtrudeGeometry(shape, {
+          depth: 12,
+          bevelEnabled: true,
+          bevelThickness: 0.8,
+          bevelSize: 0.35,
+          bevelSegments: 3,
+          curveSegments: 6,
+        });
 
-  const material = new THREE.MeshPhysicalMaterial({
-    color: displayColor,
-    metalness: isAccent ? 0.6 : 0.85,
-    roughness: isAccent ? 0.18 : 0.25,
-    clearcoat: 1,
-    clearcoatRoughness: 0.06,
-    envMapIntensity: isAccent ? 2.5 : 3.2,
-    ior: 1.5,
-    transmission: 0,
-    reflectivity: 1,
-    side: THREE.DoubleSide,
-    polygonOffset: true,
-    polygonOffsetFactor: -pathIndex,
-    polygonOffsetUnits: -pathIndex,
-  });
+        geometry.computeVertexNormals();
 
-  const shapes = SVGLoader.createShapes(path);
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
 
-  shapes.forEach((shape) => {
-    const geometry = new THREE.ExtrudeGeometry(shape, {
-  depth: 22,
-  bevelEnabled: true,
-  bevelThickness: 1.4,
-  bevelSize: 0.5,
-  bevelSegments: 4,
-  curveSegments: 6,
-});
-
-    geometry.computeVertexNormals();
-
-    const mesh = new THREE.Mesh(geometry, material);
-    mesh.castShadow = true;
-    mesh.receiveShadow = true;
-
-    meshGroup.add(mesh);
-  });
-});
+        meshGroup.add(mesh);
+      });
+    });
 
     // Center complete logo (unscaled inner group ke andar)
     const box = new THREE.Box3().setFromObject(meshGroup);
@@ -98,10 +133,5 @@ export default function Logo3D() {
     groupRef.current.rotation.y += delta * 0.6;
   });
 
-  return (
-    <primitive
-      ref={groupRef}
-      object={logo}
-    />
-  );
+  return <primitive ref={groupRef} object={logo} />;
 }
