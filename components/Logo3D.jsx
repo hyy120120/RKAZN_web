@@ -73,13 +73,17 @@ export default function Logo3D() {
     parsed.forEach(({ path, color, shapes }, pathIndex) => {
       if (isHoleColor(color)) return;
 
-      const material = new THREE.MeshPhysicalMaterial({
-        color,
-        metalness: 0.9,
-        roughness: 0.22,
-        clearcoat: 1,
-        clearcoatRoughness: 0.08,
-        envMapIntensity: 2.2,
+      const hsl = {};
+color.getHSL(hsl);
+const isAccentColor = hsl.s > 0.15;
+
+const material = new THREE.MeshPhysicalMaterial({
+  color: isAccentColor ? color : new THREE.Color("#d8d8d8"),
+  metalness: 0.9,
+  roughness: 0.22,
+  clearcoat: 1,
+  clearcoatRoughness: 0.08,
+  envMapIntensity: 2.2,
         ior: 1.5,
         transmission: 0,
         reflectivity: 1,
