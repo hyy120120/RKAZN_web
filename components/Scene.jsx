@@ -110,7 +110,7 @@ export default function Scene() {
       <EffectComposer>
         <Bloom
           intensity={0.35}
-          luminanceThreshold={0.7}
+          luminanceThreshold={0.85}
           luminanceSmoothing={0.9}
         />
       </EffectComposer>

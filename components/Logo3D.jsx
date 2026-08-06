@@ -79,19 +79,19 @@ const isAccentColor = hsl.s > 0.15;
 
 const material = new THREE.MeshPhysicalMaterial({
   color: isAccentColor ? color : new THREE.Color("#d8d8d8"),
-  metalness: 0.9,
-  roughness: 0.22,
-  clearcoat: 1,
-  clearcoatRoughness: 0.08,
-  envMapIntensity: 2.2,
-        ior: 1.5,
-        transmission: 0,
-        reflectivity: 1,
-        side: THREE.DoubleSide,
-        polygonOffset: true,
-        polygonOffsetFactor: -pathIndex,
-        polygonOffsetUnits: -pathIndex,
-      });
+  metalness: isAccentColor ? 0.55 : 0.9,
+  roughness: isAccentColor ? 0.45 : 0.22,
+  clearcoat: isAccentColor ? 0.4 : 1,
+  clearcoatRoughness: 0.2,
+  envMapIntensity: isAccentColor ? 1.3 : 2.2,
+  ior: 1.5,
+  transmission: 0,
+  reflectivity: 1,
+  side: THREE.DoubleSide,
+  polygonOffset: true,
+  polygonOffsetFactor: -pathIndex,
+  polygonOffsetUnits: -pathIndex,
+});
 
       shapes.forEach((shape) => {
         const geometry = new THREE.ExtrudeGeometry(shape, {
