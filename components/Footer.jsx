@@ -3,12 +3,7 @@
 export default function Footer() {
   return (
     <footer className="site-footer">
-      {/* Left */}
-      <span className="name">
-        Rudra Kapadia
-      </span>
-
-      {/* Right */}
+      {/* left */}
       <div className="socials">
         <a
           href="https://www.linkedin.com/in/rudra-kapadia-02bb642b9"
@@ -28,6 +23,12 @@ export default function Footer() {
           Instagram
         </a>
       </div>
+
+      {/* Left */}
+      <span className="name">
+        Rudra Kapadia
+      </span>
+
     </footer>
   );
 }
