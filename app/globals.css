@@ -286,3 +286,288 @@ body {
     padding: 24px;
   }
 }
+
+/* ================= PRELOADER (cinematic, 4 stages) ================= */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  background: #08090a;
+  overflow: hidden;
+}
+
+.preloader-stage {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.preloader-stage.is-active {
+  opacity: 1;
+}
+
+.preloader-stage.is-waiting {
+  opacity: 0;
+}
+
+.preloader-stage.is-gone {
+  opacity: 0;
+}
+
+.preloader-caption {
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #7d8a8f;
+  animation: captionFlicker 1.6s ease-in-out infinite;
+}
+
+@keyframes captionFlicker {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+/* ---------- Stage 1: Neural Network ---------- */
+
+.neural-svg {
+  width: 220px;
+  height: 220px;
+}
+
+.neural-link {
+  stroke: #3a5560;
+  stroke-width: 1;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: drawLink 0.7s ease forwards;
+}
+
+@keyframes drawLink {
+  to { stroke-dashoffset: 0; }
+}
+
+.neural-node {
+  fill: #498a9f;
+  opacity: 0;
+  filter: drop-shadow(0 0 4px rgba(73, 138, 159, 0.9));
+  animation: nodePulse 0.5s ease forwards, nodeBreathe 1.8s ease-in-out infinite 1s;
+}
+
+@keyframes nodePulse {
+  from { opacity: 0; r: 1; }
+  to { opacity: 1; }
+}
+
+@keyframes nodeBreathe {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ---------- Stage 2: Circuit Scan ---------- */
+
+.circuit-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(73, 138, 159, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(73, 138, 159, 0.06) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.circuit-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #498a9f, transparent);
+  box-shadow: 0 0 12px 2px rgba(73, 138, 159, 0.8);
+  animation: scanMove 2.2s linear infinite;
+}
+
+@keyframes scanMove {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+.circuit-svg {
+  width: 300px;
+  height: 160px;
+}
+
+.circuit-trace {
+  fill: none;
+  stroke: #498a9f;
+  stroke-width: 2;
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  filter: drop-shadow(0 0 3px rgba(73, 138, 159, 0.8));
+  animation: traceDraw 1.6s ease forwards;
+}
+
+.circuit-trace-delay {
+  animation-delay: 0.35s;
+}
+
+@keyframes traceDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---------- Stage 3: Data Stream ---------- */
+
+.data-stream {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.data-col {
+  position: absolute;
+  top: -40%;
+  white-space: pre;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(73, 138, 159, 0.55);
+  animation-name: dataFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes dataFall {
+  from { transform: translateY(0); }
+  to { transform: translateY(180%); }
+}
+
+.data-ring {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid rgba(73, 138, 159, 0.35);
+  border-top-color: #498a9f;
+  animation: ringSpin 1s linear infinite;
+}
+
+@keyframes ringSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Stage 4: Brand Reveal ---------- */
+
+.brand-reveal {
+  position: relative;
+}
+
+.brand-reveal-text {
+  position: relative;
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 46px;
+  letter-spacing: 10px;
+  color: #eaeaea;
+
+  opacity: 0;
+  transform: scale(0.85);
+  animation: brandIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.brand-reveal-text::before,
+.brand-reveal-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  opacity: 0.7;
+}
+
+.brand-reveal-text::before {
+  color: #498a9f;
+  animation: glitchOffset 0.5s steps(2, end) 0.55s 2;
+}
+
+.brand-reveal-text::after {
+  color: #a04848;
+  animation: glitchOffset 0.5s steps(2, end) 0.6s 2 reverse;
+}
+
+@keyframes brandIn {
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glitchOffset {
+  0% { transform: translate(0, 0); opacity: 0; }
+  20% { transform: translate(-3px, 1px); opacity: 0.6; }
+  40% { transform: translate(3px, -1px); opacity: 0.4; }
+  60% { transform: translate(-2px, 0); opacity: 0.6; }
+  100% { transform: translate(0, 0); opacity: 0; }
+}
+
+@media (max-width: 640px) {
+  .neural-svg { width: 170px; height: 170px; }
+  .circuit-svg { width: 240px; height: 130px; }
+  .brand-reveal-text { font-size: 30px; letter-spacing: 6px; }
+}
+
+/* ================= PRELOADER 3D ================= */
+
+.preloader3d {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  background: #08090a;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: opacity 0.8s ease;
+}
+
+.preloader3d canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.preloader3d-fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.preloader3d-caption {
+  position: absolute;
+  bottom: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #7d8a8f;
+  text-align: center;
+  white-space: nowrap;
+
+  animation: captionFlicker 1.6s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .preloader3d-caption {
+    bottom: 10%;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+  }
+}
