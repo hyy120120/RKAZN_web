@@ -1,25 +1,58 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SiteNav from "./SiteNav";
 import Footer from "./Footer";
+import Counter from "./Counter";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ⚠️ Ye sample/placeholder projects hain — apne real projects se replace karna
+// ⚠️ Placeholder projects — apne real projects se replace karna
 const PROJECTS = [
-  { title: "Commerce Platform Rebuild", category: "Full-Stack / E-Commerce", year: "2026", accent: "#498a9f" },
-  { title: "Interactive 3D Product Configurator", category: "WebGL / Three.js", year: "2026", accent: "#6fc7dd" },
-  { title: "SaaS Dashboard & Analytics", category: "Full-Stack / SaaS", year: "2025", accent: "#498a9f" },
-  { title: "Real-Time Booking System", category: "Backend / API", year: "2025", accent: "#6fc7dd" },
-  { title: "Brand Portfolio Site", category: "Frontend / Design", year: "2025", accent: "#498a9f" },
-  { title: "Internal Tooling Suite", category: "Full-Stack / Automation", year: "2024", accent: "#6fc7dd" },
+  { title: "Commerce Platform Rebuild", category: "Full-Stack", tag: "web", year: "2026", accent: "#498a9f" },
+  { title: "Interactive 3D Product Configurator", category: "WebGL / Three.js", tag: "3d", year: "2026", accent: "#6fc7dd" },
+  { title: "SaaS Dashboard & Analytics", category: "Full-Stack", tag: "web", year: "2025", accent: "#498a9f" },
+  { title: "Real-Time Booking System", category: "Backend / API", tag: "backend", year: "2025", accent: "#6fc7dd" },
+  { title: "Brand Portfolio Site", category: "Frontend / Design", tag: "web", year: "2025", accent: "#498a9f" },
+  { title: "Internal Tooling Suite", category: "Full-Stack / Automation", tag: "backend", year: "2024", accent: "#6fc7dd" },
+  { title: "AI-Assisted Content Engine", category: "Backend / AI", tag: "backend", year: "2024", accent: "#6fc7dd" },
+  { title: "Particle Logo Reveal System", category: "WebGL / Three.js", tag: "3d", year: "2026", accent: "#498a9f" },
+];
+
+const FILTERS = [
+  { key: "all", label: "All" },
+  { key: "web", label: "Web" },
+  { key: "3d", label: "3D / WebGL" },
+  { key: "backend", label: "Backend" },
 ];
 
 export default function WorkContent() {
   const rootRef = useRef(null);
+  const previewRef = useRef(null);
+  const quickX = useRef(null);
+  const quickY = useRef(null);
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [hoverProject, setHoverProject] = useState(null);
+
+  const filtered =
+    activeFilter === "all" ? PROJECTS : PROJECTS.filter((p) => p.tag === activeFilter);
+
+  // Cursor-follow preview setup
+  useEffect(() => {
+    if (!previewRef.current) return;
+    quickX.current = gsap.quickTo(previewRef.current, "x", { duration: 0.55, ease: "power3" });
+    quickY.current = gsap.quickTo(previewRef.current, "y", { duration: 0.55, ease: "power3" });
+
+    const handleMove = (e) => {
+      quickX.current?.(e.clientX);
+      quickY.current?.(e.clientY);
+    };
+
+    window.addEventListener("mousemove", handleMove);
+    return () => window.removeEventListener("mousemove", handleMove);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -32,26 +65,33 @@ export default function WorkContent() {
         delay: 0.15,
       });
 
-      gsap.from(".work-card", {
-        y: 50,
+      gsap.from(".work-stat", {
+        y: 20,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.7,
+        stagger: 0.08,
         ease: "power3.out",
-        stagger: 0.09,
-        scrollTrigger: {
-          trigger: ".work-grid",
-          start: "top 85%",
-        },
+        scrollTrigger: { trigger: ".work-stats", start: "top 88%" },
       });
     }, rootRef);
 
     return () => ctx.revert();
   }, []);
 
+  // Filter change hone par list ka fade-in animate karo
+  useEffect(() => {
+    gsap.fromTo(
+      ".work-row",
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.5, stagger: 0.05, ease: "power2.out" }
+    );
+  }, [activeFilter]);
+
   return (
     <div className="inner-page" ref={rootRef}>
       <SiteNav />
 
+      {/* -------- Hero -------- */}
       <section className="work-hero">
         <h1 className="work-hero-heading">
           <span className="work-hero-line reveal-line">
@@ -62,35 +102,81 @@ export default function WorkContent() {
           </span>
         </h1>
         <p className="work-hero-sub">
-          A selection of full-stack builds, interactive experiences, and
+          A selection of full-stack builds, interactive 3D experiences, and
           product engineering — more added regularly.
         </p>
+
+        <div className="work-stats">
+          <div className="work-stat">
+            <div className="work-stat-num">
+              <Counter value={PROJECTS.length} suffix="+" />
+            </div>
+            <div className="work-stat-label">Projects Shipped</div>
+          </div>
+          <div className="work-stat">
+            <div className="work-stat-num">
+              <Counter value={3} suffix="+" />
+            </div>
+            <div className="work-stat-label">Years Building</div>
+          </div>
+          <div className="work-stat">
+            <div className="work-stat-num">
+              <Counter value={100} suffix="%" />
+            </div>
+            <div className="work-stat-label">Custom-Written Code</div>
+          </div>
+        </div>
       </section>
 
-      <section className="work-grid">
-        {PROJECTS.map((project) => (
-          <article className="work-card" key={project.title}>
-            <div
-              className="work-card-thumb"
-              style={{
-                background: `linear-gradient(135deg, ${project.accent}33, #0a0a0a 70%)`,
-              }}
-            >
-              <span
-                className="work-card-glow"
-                style={{ background: project.accent }}
-              />
-            </div>
-            <div className="work-card-meta">
-              <h3>{project.title}</h3>
-              <div className="work-card-sub">
-                <span>{project.category}</span>
-                <span>{project.year}</span>
-              </div>
-            </div>
-          </article>
+      {/* -------- Filters -------- */}
+      <div className="work-filters">
+        {FILTERS.map((f) => (
+          <button
+            key={f.key}
+            className={`work-filter-btn ${activeFilter === f.key ? "is-active" : ""}`}
+            onClick={() => setActiveFilter(f.key)}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
+
+      {/* -------- Project list (cursor-follow preview) -------- */}
+      <section className="work-list">
+        {filtered.map((project, i) => (
+          <div
+            className="work-row"
+            key={project.title}
+            onMouseEnter={() => setHoverProject(project)}
+            onMouseLeave={() => setHoverProject(null)}
+          >
+            <span className="work-row-index">{String(i + 1).padStart(2, "0")}</span>
+            <span className="work-row-title">{project.title}</span>
+            <span className="work-row-category">{project.category}</span>
+            <span className="work-row-year">{project.year}</span>
+          </div>
         ))}
       </section>
+
+      {/* -------- Floating cursor preview -------- */}
+      <div
+        ref={previewRef}
+        className={`work-preview ${hoverProject ? "is-visible" : ""}`}
+      >
+        {hoverProject && (
+          <div
+            className="work-preview-inner"
+            style={{
+              background: `linear-gradient(135deg, ${hoverProject.accent}55, #0a0a0a 75%)`,
+            }}
+          >
+            <span
+              className="work-preview-glow"
+              style={{ background: hoverProject.accent }}
+            />
+          </div>
+        )}
+      </div>
 
       <Footer />
     </div>

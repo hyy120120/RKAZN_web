@@ -195,6 +195,18 @@ export default function AboutContent() {
         </div>
       </section>
 
+      {/* -------- Ghost watermark logo -------- */}
+      <section className="ghost-logo-section">
+        <img
+          src="/logo-ghost.png"
+          alt="RKAZN"
+          className="ghost-logo-img"
+        />
+        <span className="ghost-logo-copyright">
+          © {new Date().getFullYear()} RKAZN. All rights reserved.
+        </span>
+      </section>
+
       <Footer />
     </div>
   );
