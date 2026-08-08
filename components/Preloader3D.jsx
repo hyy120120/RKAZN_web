@@ -17,12 +17,25 @@ const BASE_FOV = 32;
 const GRAVITY = -14;
 const RESTITUTION = 0.5;
 const FLOOR_Y = -0.3;
-const DROP_START_Y = 15; // pehle se kaafi zyada upar se — fall lamba aur dramatic
+const DROP_START_Y = 15;
 const MAX_BOUNCES = 3;
-const BALL_X_POSITIONS = [-1.6, -0.55, 0.55, 1.6];
-const MAX_START_DELAY = 1.1; // har ball randomly 0 - 1.1s ke beech shuru hogi
+const BALL_COUNT = 4;
+const MAX_START_DELAY = 1.4; // har ball randomly 0 - 1.4s ke beech shuru hogi
+const BALL_X_SPREAD = 2.4; // -2.4 se +2.4 ke beech randomly kahin bhi
 
 const ORB_BURST_SECONDS = 0.4;
+
+// Sab balls white, sirf ek ball tera logo-accent color leke aayegi
+function useBallConfigs() {
+  return useMemo(() => {
+    const accentIndex = Math.floor(Math.random() * BALL_COUNT);
+    return Array.from({ length: BALL_COUNT }).map((_, i) => ({
+      x: (Math.random() * 2 - 1) * BALL_X_SPREAD,
+      delay: Math.random() * MAX_START_DELAY,
+      color: i === accentIndex ? "#8fe0f2" : "#f4f4f4",
+    }));
+  }, []);
+}
 
 function ResponsiveCameraRig() {
   const { camera, size } = useThree();
@@ -54,15 +67,13 @@ function ResponsiveCameraRig() {
 // har bounce pe kam height), phir "onAllBounced" call hota hai
 // ---------------------------------------------------------------------------
 
-function DroppingBalls({ onAllBounced }) {
+function DroppingBalls({ balls, onAllBounced }) {
   const orbRefs = useRef([]);
 
-  // Har ball ka apna random start-delay, position, velocity, bounce-count — sab independent
-  const delays = useRef(BALL_X_POSITIONS.map(() => Math.random() * MAX_START_DELAY));
   const elapsedTimeRef = useRef(0);
-  const posY = useRef(BALL_X_POSITIONS.map(() => DROP_START_Y));
-  const velY = useRef(BALL_X_POSITIONS.map(() => 0));
-  const bounceCounts = useRef(BALL_X_POSITIONS.map(() => 0));
+  const posY = useRef(balls.map(() => DROP_START_Y));
+  const velY = useRef(balls.map(() => 0));
+  const bounceCounts = useRef(balls.map(() => 0));
   const doneRef = useRef(false);
 
   useFrame((state, delta) => {
@@ -70,11 +81,11 @@ function DroppingBalls({ onAllBounced }) {
     const dt = Math.min(delta, 0.033);
     elapsedTimeRef.current += dt;
 
-    BALL_X_POSITIONS.forEach((x, i) => {
+    balls.forEach((ball, i) => {
       const orb = orbRefs.current[i];
       if (!orb) return;
 
-      const hasStarted = elapsedTimeRef.current >= delays.current[i];
+      const hasStarted = elapsedTimeRef.current >= ball.delay;
 
       if (!hasStarted) {
         orb.visible = false;
@@ -92,14 +103,13 @@ function DroppingBalls({ onAllBounced }) {
         bounceCounts.current[i] += 1;
       }
 
-      orb.position.set(x, posY.current[i], 0);
+      orb.position.set(ball.x, posY.current[i], 0);
 
       const speed = Math.abs(velY.current[i]);
       const squash = THREE.MathUtils.clamp(1 - speed * 0.012, 0.8, 1.2);
       orb.scale.set(1 / squash, squash, 1 / squash);
     });
 
-    // Jab tak SABHI balls apne 3 bounce complete na kar lein, wait karo
     const allDone = bounceCounts.current.every((c) => c >= MAX_BOUNCES);
     if (allDone && !doneRef.current) {
       doneRef.current = true;
@@ -109,11 +119,11 @@ function DroppingBalls({ onAllBounced }) {
 
   return (
     <group>
-      {BALL_X_POSITIONS.map((x, i) => (
-        <mesh key={i} ref={(el) => (orbRefs.current[i] = el)} position={[x, DROP_START_Y, 0]}>
+      {balls.map((ball, i) => (
+        <mesh key={i} ref={(el) => (orbRefs.current[i] = el)} position={[ball.x, DROP_START_Y, 0]}>
           <sphereGeometry args={[0.26, 24, 24]} />
           <meshBasicMaterial
-            color="#8fe0f2"
+            color={ball.color}
             transparent
             opacity={1}
             blending={THREE.AdditiveBlending}
@@ -129,7 +139,7 @@ function DroppingBalls({ onAllBounced }) {
 // Burst — teesre bounce ke baad balls fat jaati hain
 // ---------------------------------------------------------------------------
 
-function BurstBalls() {
+function BurstBalls({ balls }) {
   const orbRefs = useRef([]);
   const shockRef = useRef();
   const startRef = useRef(null);
@@ -139,10 +149,10 @@ function BurstBalls() {
     const elapsed = state.clock.elapsedTime - startRef.current;
     const t = Math.min(elapsed / ORB_BURST_SECONDS, 1);
 
-    BALL_X_POSITIONS.forEach((x, i) => {
+    balls.forEach((ball, i) => {
       const orb = orbRefs.current[i];
       if (!orb) return;
-      orb.position.set(x, FLOOR_Y, 0);
+      orb.position.set(ball.x, FLOOR_Y, 0);
       orb.scale.setScalar(THREE.MathUtils.lerp(1, 4.5, t));
       orb.material.opacity = Math.max(0, 1 - t * 1.3);
     });
@@ -156,11 +166,11 @@ function BurstBalls() {
 
   return (
     <group>
-      {BALL_X_POSITIONS.map((x, i) => (
-        <mesh key={i} ref={(el) => (orbRefs.current[i] = el)} position={[x, FLOOR_Y, 0]}>
+      {balls.map((ball, i) => (
+        <mesh key={i} ref={(el) => (orbRefs.current[i] = el)} position={[ball.x, FLOOR_Y, 0]}>
           <sphereGeometry args={[0.26, 24, 24]} />
           <meshBasicMaterial
-            color="#8fe0f2"
+            color={ball.color}
             transparent
             opacity={1}
             blending={THREE.AdditiveBlending}
@@ -208,7 +218,7 @@ function ParticleLogo({ onSettled }) {
   const startTimeRef = useRef(null);
   const settledRef = useRef(false);
 
-  const { positions, basePositions, targets, colors, count } = useMemo(() => {
+  const { positions, basePositions, targets, colors, delays, count } = useMemo(() => {
     const entries = svg.paths
       .map((path) => ({
         path,
@@ -263,6 +273,7 @@ function ParticleLogo({ onSettled }) {
     const SCALE = 0.012;
     const finalTargets = new Float32Array(total * 3);
     const finalBase = new Float32Array(total * 3);
+    const finalDelays = new Float32Array(total); // har particle apne alag time pe move karega
 
     for (let i = 0; i < total; i++) {
       const x = (rawTargets[i * 3] - center.x) * SCALE;
@@ -284,6 +295,10 @@ function ParticleLogo({ onSettled }) {
       finalBase[i * 3] = dir.x * r;
       finalBase[i * 3 + 1] = FLOOR_Y + dir.y * r;
       finalBase[i * 3 + 2] = dir.z * r;
+
+      // Kuch particles turant chalna shuru karenge, kuch thodi der baad —
+      // isse ek rigid "block" ki jagah organic swarm jaisa lagega
+      finalDelays[i] = Math.random() * 0.45;
     }
 
     return {
@@ -291,6 +306,7 @@ function ParticleLogo({ onSettled }) {
       basePositions: finalBase,
       targets: finalTargets,
       colors: new Float32Array(rawColors),
+      delays: finalDelays,
       count: total,
     };
   }, [svg]);
@@ -300,23 +316,27 @@ function ParticleLogo({ onSettled }) {
     if (startTimeRef.current === null) startTimeRef.current = state.clock.elapsedTime;
 
     const elapsed = state.clock.elapsedTime - startTimeRef.current;
-    const t = Math.min(elapsed / CONVERGE_SECONDS, 1);
-    const eased = 1 - Math.pow(1 - t, 3);
+    const globalFrac = Math.min(elapsed / CONVERGE_SECONDS, 1);
 
     const posAttr = pointsRef.current.geometry.attributes.position;
     const arr = posAttr.array;
 
     for (let i = 0; i < count; i++) {
       const ix = i * 3;
+
+      // Har particle apne "delay" ke baad hi move karna shuru karta hai,
+      // par sab exactly globalFrac=1 pe pahunch ke settle ho jaate hain
+      const startFrac = delays[i];
+      const localT = Math.max(0, (globalFrac - startFrac) / (1 - startFrac));
+      const eased = 1 - Math.pow(1 - localT, 3);
+
       arr[ix] = THREE.MathUtils.lerp(basePositions[ix], targets[ix], eased);
       arr[ix + 1] = THREE.MathUtils.lerp(basePositions[ix + 1], targets[ix + 1], eased);
       arr[ix + 2] = THREE.MathUtils.lerp(basePositions[ix + 2], targets[ix + 2], eased);
     }
     posAttr.needsUpdate = true;
 
-    pointsRef.current.rotation.y = Math.sin(elapsed * 0.3) * 0.06 * (1 - eased * 0.7);
-
-    if (t >= 1 && !settledRef.current) {
+    if (globalFrac >= 1 && !settledRef.current) {
       settledRef.current = true;
       onSettled?.();
     }
@@ -349,6 +369,7 @@ export default function Preloader3D() {
   const [phase, setPhase] = useState("dropping");
   const [hidden, setHidden] = useState(false);
   const firedRef = useRef(false);
+  const balls = useBallConfigs();
 
   const handleAllBounced = () => {
     setPhase("burst");
@@ -390,8 +411,8 @@ export default function Preloader3D() {
         <ResponsiveCameraRig />
         <ambientLight intensity={1} />
 
-        {showBalls && <DroppingBalls onAllBounced={handleAllBounced} />}
-        {showBurst && <BurstBalls />}
+        {showBalls && <DroppingBalls balls={balls} onAllBounced={handleAllBounced} />}
+        {showBurst && <BurstBalls balls={balls} />}
         {showLogo && <ParticleLogo onSettled={handleSettled} />}
 
         <EffectComposer>
