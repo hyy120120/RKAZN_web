@@ -226,6 +226,12 @@ body {
   text-transform: uppercase;
 }
 
+.footer-copyright {
+  color: var(--fg-dim);
+  font-size: 11px;
+  letter-spacing: var(--tracking);
+}
+
 .socials {
   display: flex;
   align-items: center;
@@ -784,7 +790,7 @@ body {
 /* -------- CTA -------- */
  
 .about-cta {
-  padding: clamp(80px, 12vw, 160px) var(--edge);
+  padding: clamp(40px, 5vw, 60px) var(--edge) clamp(20px, 3vw, 36px);
   text-align: center;
 }
  
@@ -1130,5 +1136,65 @@ body {
   line-height: 1.35;
   font-weight: 600;
   font-style: italic;
+}
+ 
+
+/* ================= GHOST WATERMARK LOGO ================= */
+
+.ghost-logo-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding-top: 40px;
+  padding-bottom: 100px;
+}
+
+.ghost-logo-img {
+  display: block;
+  width: clamp(240px, 50vw, 760px);
+  max-width: 90%;
+  height: auto;
+
+  opacity: 0.07;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+.ghost-logo-copyright {
+  margin-top: 16px;
+  font-size: 11px;
+  letter-spacing: var(--tracking);
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+
+/* ================= WORK PREVIEW MEDIA (logo placeholder / real image) ================= */
+ 
+.work-preview-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ 
+.work-preview-media.is-placeholder {
+  /* Placeholder mode — poori tarah cover nahi, center me chhota sa logo dikhega */
+  object-fit: contain;
+  width: 45%;
+  height: 45%;
+  inset: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
 }
  

@@ -202,9 +202,7 @@ export default function AboutContent() {
           alt="RKAZN"
           className="ghost-logo-img"
         />
-        <span className="ghost-logo-copyright">
-          © {new Date().getFullYear()} RKAZN. All rights reserved.
-        </span>
+       
       </section>
 
       <Footer />

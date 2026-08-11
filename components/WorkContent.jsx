@@ -174,6 +174,13 @@ export default function WorkContent() {
               className="work-preview-glow"
               style={{ background: hoverProject.accent }}
             />
+            {/* Jab tak real project image na ho, logo placeholder dikhega.
+                Kisi project me "image" field daal do (PROJECTS array me), wo real image use hogi */}
+            <img
+              src={hoverProject.image || "/logo-white.png"}
+              alt={hoverProject.title}
+              className={`work-preview-media ${hoverProject.image ? "" : "is-placeholder"}`}
+            />
           </div>
         )}
       </div>

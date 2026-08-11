@@ -5,6 +5,7 @@ export default function Footer() {
     <footer className="site-footer">
       {/* left */}
       <div className="socials">
+        
         <a
           href="https://www.linkedin.com/in/rudra-kapadia-02bb642b9"
           target="_blank"
@@ -12,7 +13,6 @@ export default function Footer() {
         >
           LinkedIn
         </a>
-
         <span>/</span>
 
         <a
@@ -23,6 +23,10 @@ export default function Footer() {
           Instagram
         </a>
       </div>
+        
+      <span className="footer-copyright">
+  © {new Date().getFullYear()} RKAZN. All rights reserved.
+</span>
 
       {/* Left */}
       <span className="name">
