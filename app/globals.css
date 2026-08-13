@@ -1149,10 +1149,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 
-  padding-top: 40px;
-  padding-bottom: 100px;
+  padding-top: 25px;
+  padding-bottom: 125px;
 }
 
 .ghost-logo-img {
@@ -1161,7 +1161,7 @@ body {
   max-width: 90%;
   height: auto;
 
-  opacity: 0.07;
+  opacity: 0.15;
 
   user-select: none;
   pointer-events: none;
