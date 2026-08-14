@@ -12,7 +12,8 @@ export default function SiteNav() {
 
       <nav className="site-nav-links" aria-label="Primary Navigation">
         <Link href="/">Home</Link>
-        <Link href="/work">Work</Link>
+        {/* <Link href="/work">Work</Link> */}
+        <Link href="/services">Services</Link>
         <Link href="/about">About</Link>
       </nav>
     </header>

@@ -25,8 +25,11 @@ export default function Header() {
 
       {/* Navigation */}
       <nav className="header-nav" aria-label="Primary Navigation">
-        <a href="/work">
+        {/* <a href="/work">
           <RevealText text="Work" delay={0.3} />
+        </a> */}
+        <a href="/services">
+       <RevealText text="Services" delay={0.3} />
         </a>
         <a href="/about">
           <RevealText text="About" delay={0.35} />

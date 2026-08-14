@@ -1,11 +1,7 @@
-import WorkContent from "@/components/WorkContent";
+import { notFound } from "next/navigation";
 
-export const metadata = {
-  title: "Work",
-  description:
-    "Selected projects by RKAZN — full-stack web development, 3D experiences, and product engineering.",
-};
-
+// Work page temporarily disabled — services page le raha hai iski jagah.
+// Wapas enable karne ke liye: neeche wali line hata do aur WorkContent import + return wapas laga do.
 export default function WorkPage() {
-  return <WorkContent />;
+  notFound();
 }
