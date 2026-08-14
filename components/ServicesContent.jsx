@@ -40,28 +40,28 @@ export default function ServicesContent() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(".services-hero-line .reveal-inner", {
-        yPercent: 115,
+        yPercent: 100,
         opacity: 0,
-        duration: 1,
-        ease: "power4.out",
-        stagger: 0.08,
-        delay: 0.15,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.06,
+        delay: 0.1,
       });
 
       gsap.from(".work-stat", {
-        y: 20,
+        y: 15,
         opacity: 0,
-        duration: 0.7,
-        stagger: 0.08,
+        duration: 0.6,
+        stagger: 0.06,
         ease: "power3.out",
         scrollTrigger: { trigger: ".services-stats", start: "top 88%" },
       });
 
       gsap.from(".service-row", {
-        y: 24,
+        y: 16,
         opacity: 0,
-        duration: 0.6,
-        stagger: 0.08,
+        duration: 0.5,
+        stagger: 0.06,
         ease: "power3.out",
         scrollTrigger: { trigger: ".services-list", start: "top 85%" },
       });

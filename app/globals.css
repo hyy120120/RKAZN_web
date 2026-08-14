@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 :root {
   --bg: #0a0806;
   --fg: #f5f3ef;
@@ -26,7 +27,7 @@ main {
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "Inter", sans-serif;
 }
 
 /* ================= HERO ================= */
@@ -61,7 +62,7 @@ body {
   }
 
   to {
-    transform: scale(1.08);
+    transform: scale(1.02);
   }
 }
 
@@ -91,7 +92,7 @@ body {
   height: 200%;
   z-index: 3;
 
-  opacity: 0.04;
+  opacity: 0.015;
 
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 
@@ -1604,5 +1605,130 @@ body {
 @media (max-width: 600px) {
   .process-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ================= PREMIUM AI AGENCY STYLES ================= */
+
+/* Better typography hierarchy */
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+/* Services Page Premium Updates */
+.services-list {
+  padding: 40px var(--edge) clamp(60px, 8vw, 120px);
+}
+
+.service-row {
+  padding: 32px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-row:hover {
+  transform: translateX(4px);
+}
+
+.service-row-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  transition: all 0.3s ease;
+}
+
+.service-row-body {
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Process Grid - Premium Look */
+.process-grid {
+  gap: 40px;
+}
+
+.process-step {
+  padding: 24px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(111, 199, 221, 0.1);
+  transition: all 0.3s ease;
+}
+
+.process-step:hover {
+  background: rgba(111, 199, 221, 0.08);
+  border-color: rgba(111, 199, 221, 0.25);
+  transform: translateY(-4px);
+}
+
+.process-step-num {
+  font-size: 14px;
+  font-weight: 700;
+  color: #6fc7dd;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.process-step-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+/* Smooth fade-in animations for sections */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-row {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Stagger animation delays */
+.service-row:nth-child(1) { animation-delay: 0.1s; animation-name: fadeInUp; }
+.service-row:nth-child(2) { animation-delay: 0.15s; animation-name: fadeInUp; }
+.service-row:nth-child(3) { animation-delay: 0.2s; animation-name: fadeInUp; }
+.service-row:nth-child(4) { animation-delay: 0.25s; animation-name: fadeInUp; }
+
+/* Better hover states */
+.service-tag {
+  transition: all 0.3s ease;
+}
+
+.service-tag:hover {
+  border-color: rgba(111, 199, 221, 0.8);
+  background: rgba(111, 199, 221, 0.1);
+}
+
+/* Mobile improvements */
+@media (max-width: 768px) {
+  .process-grid {
+    gap: 24px;
+  }
+  
+  .process-step {
+    padding: 20px;
+  }
+  
+  .service-row {
+    padding: 24px 0;
   }
 }
