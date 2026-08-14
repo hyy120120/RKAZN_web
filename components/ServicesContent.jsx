@@ -66,14 +66,14 @@ export default function ServicesContent() {
         scrollTrigger: { trigger: ".services-list", start: "top 85%" },
       });
 
-      gsap.from(".process-step", {
-        y: 24,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".process-grid", start: "top 85%" },
-      });
+      // gsap.from(".process-step", {
+      //   y: 24,
+      //   opacity: 0,
+      //   duration: 0.6,
+      //   stagger: 0.1,
+      //   ease: "power3.out",
+      //   scrollTrigger: { trigger: ".process-grid", start: "top 95%" },
+      // });
     }, rootRef);
 
     return () => ctx.revert();
@@ -187,6 +187,15 @@ export default function ServicesContent() {
             info@rkazn.com →
           </a>
         </div>
+      </section>
+
+       {/* -------- Ghost watermark logo -------- */}
+      <section className="ghost-logo-section">
+        <img
+          src="/logo-ghost.png"
+          alt="RKAZN"
+          className="ghost-logo-img"
+        />
       </section>
 
       <Footer />

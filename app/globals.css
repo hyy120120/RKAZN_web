@@ -707,16 +707,19 @@ body {
 /* -------- Generic section -------- */
  
 .about-section {
-  padding: clamp(50px, 7vw, 90px) var(--edge);
+  padding: clamp(60px, 8vw, 100px) var(--edge);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: clamp(40px, 5vw, 80px);
+  clear: both;
 }
  
 .section-label {
-  font-size: 11px;
+  font-size: 12px;  
   letter-spacing: var(--tracking);
   text-transform: uppercase;
-  color: var(--fg-dim);
+  color: var(--fg);  
   margin-bottom: 32px;
+  font-weight: 600;  
 }
  
 /* -------- Capabilities -------- */
@@ -1436,13 +1439,14 @@ body {
 /* ================= SERVICES PAGE ================= */
 
 .services-list {
-  padding: 20px var(--edge) clamp(60px, 8vw, 100px);
+  padding: 40px var(--edge) clamp(100px, 12vw, 150px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: clamp(40px, 6vw, 80px);
 }
 
 .service-row {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 28px 0;
+  padding: 16px 0;
   cursor: pointer;
 }
 
@@ -1487,20 +1491,6 @@ body {
   text-align: center;
   flex-shrink: 0;
 }
-
-.service-row-body {
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
-  transition: grid-template-rows 0.4s ease, opacity 0.3s ease;
-}
-
-.service-row.is-open .service-row-body {
-  grid-template-rows: 1fr;
-  opacity: 1;
-  margin-top: 20px;
-}
-
 .service-row-body > * {
   overflow: hidden;
 }
@@ -1561,6 +1551,8 @@ body {
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
   margin-top: 8px;
+  width: 100%;
+  min-height: 200px;  /* Ensures a minimum height for the grid */
 }
 
 .process-step-num {
@@ -1630,7 +1622,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-row {
-  padding: 32px 0;
+  padding: 16px 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1646,8 +1638,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-row-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
   transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
               opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-row.is-open .service-row-body {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 20px;
 }
 
 /* Process Grid - Premium Look */
@@ -1661,12 +1662,17 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(111, 199, 221, 0.1);
   transition: all 0.3s ease;
+  display: block;           
+  min-height: 150px;        
+  opacity: 1 !important;    
+  visibility: visible !important;  
 }
 
 .process-step:hover {
   background: rgba(111, 199, 221, 0.08);
   border-color: rgba(111, 199, 221, 0.25);
   transform: translateY(-4px);
+  opacity: 1 !important;
 }
 
 .process-step-num {
