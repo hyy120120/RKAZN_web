@@ -9,12 +9,12 @@ import Footer from "./Footer";
 gsap.registerPlugin(ScrollTrigger);
 
 const CAPABILITIES = [
-  "Full-Stack Web Development",
-  "React / Next.js Engineering",
-  "3D & Interactive Experiences",
+  "AI Automation & Workflows",
+  "Custom AI Agents & Chatbots",
+  "AI-Powered Product Development",
+  "Data & Analytics Systems",
   "API & Backend Architecture",
-  "Performance Optimization",
-  "Brand-Driven UI Design",
+  "AI Strategy & Consulting",
 ];
 
 const STACK = [
@@ -117,13 +117,13 @@ export default function AboutContent() {
       <section className="about-hero">
         <h1 className="about-hero-heading">
           <span className="about-hero-line reveal-line">
-            <span className="reveal-inner">Building digital</span>
+            <span className="reveal-inner">Building AI systems</span>
           </span>
           <span className="about-hero-line reveal-line">
-            <span className="reveal-inner">products with</span>
+            <span className="reveal-inner">that turn ideas into</span>
           </span>
           <span className="about-hero-line reveal-line">
-            <span className="reveal-inner accent-text">precision &amp; craft.</span>
+            <span className="reveal-inner accent-text">real leverage.</span>
           </span>
         </h1>
       </section>
@@ -131,18 +131,19 @@ export default function AboutContent() {
       {/* -------- Bio -------- */}
       <section className="about-bio">
         <p className="bio-block">
-          RKAZN is a full-stack development studio founded by Rudra Kapadia,
-          building fast, reliable, and visually distinct web experiences for
-          brands and founders who care about the details.
+           RKAZN is an AI and product development studio founded by Rudra Kapadia.
+           We help businesses turn repetitive work, scattered data, and ambitious
+           ideas into intelligent systems that actually create leverage.
         </p>
         <p className="bio-block">
-          From interactive 3D interfaces to production-grade backend systems,
-          every project is engineered end-to-end — no templates, no
-          shortcuts, just clean code and considered design.
+          From AI automation and custom agents to full-stack products and data
+          platforms, we design and build solutions around the way your business
+          already works — then make them faster, smarter, and easier to scale.
         </p>
         <p className="bio-block">
-          Based in India, working with clients everywhere — RKAZN partners
-          with teams who want their product to feel as good as it works.
+           No unnecessary AI hype. No generic templates. Just practical systems,
+           clean engineering, and thoughtful product design built to solve real
+           problems. Based in India, working with teams everywhere.
         </p>
       </section>
 
@@ -175,20 +176,21 @@ export default function AboutContent() {
 
       {/* -------- Marquee -------- */}
       <div className="marquee">
-        <div className="marquee-track">
-          {Array.from({ length: 2 }).map((_, i) => (
-            <span key={i}>
-              BUILD&nbsp;/&nbsp;DESIGN&nbsp;/&nbsp;SHIP&nbsp;/&nbsp;REPEAT&nbsp;/&nbsp;
-              BUILD&nbsp;/&nbsp;DESIGN&nbsp;/&nbsp;SHIP&nbsp;/&nbsp;REPEAT&nbsp;/&nbsp;
-            </span>
-          ))}
-        </div>
+      <div className="marquee-track">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <span className="marquee-item" key={i}>
+            THINK&nbsp;/&nbsp;AUTOMATE&nbsp;/&nbsp;BUILD&nbsp;/&nbsp;SCALE&nbsp;/&nbsp;
+          </span>
+        ))}
       </div>
+    </div>
 
       {/* -------- CTA -------- */}
       <section className="about-cta">
         <div className="about-cta-inner">
-          <h2>Have a project in mind?</h2>
+          <h2>
+           Ready to build your <span className="accent-text">AI advantage?</span>
+         </h2>
           <a href="mailto:info@rkazn.com" className="cta-link">
             info@rkazn.com →
           </a>

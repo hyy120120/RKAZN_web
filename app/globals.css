@@ -776,7 +776,7 @@ body {
  
 .marquee-track {
   display: inline-flex;
-  animation: marqueeScroll 18s linear infinite;
+  animation: marqueeScroll 80s linear infinite;
 }
  
 .marquee-track span {
