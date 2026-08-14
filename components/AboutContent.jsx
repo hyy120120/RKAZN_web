@@ -28,6 +28,21 @@ const STACK = [
   "Tailwind",
 ];
 
+function ScrollRevealText({ children }) {
+  const words = children.split(" ");
+
+  return (
+    <p className="bio-block scroll-reveal-text">
+      {words.map((word, index) => (
+        <span className="scroll-word" key={`${word}-${index}`}>
+          {word}
+          {index !== words.length - 1 ? " " : ""}
+        </span>
+      ))}
+    </p>
+  );
+}
+
 export default function AboutContent() {
   const rootRef = useRef(null);
 
@@ -43,20 +58,36 @@ export default function AboutContent() {
         delay: 0.15,
       });
 
-      // Bio paragraphs — scroll me aate hi fade+rise
-      gsap.utils.toArray(".bio-block").forEach((el) => {
-        gsap.from(el, {
-          y: 40,
-          opacity: 0,
-          duration: 0.9,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-          },
-        });
+     // Bio text — scroll ke saath word by word reveal + reverse
+      const paragraphs = gsap.utils.toArray(".scroll-reveal-text");
+      
+      const allWords = paragraphs.map((paragraph) =>
+        Array.from(paragraph.querySelectorAll(".scroll-word"))
+      );
+      
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".about-bio",
+          start: "top 80%",
+          end: "bottom 30%",
+          scrub: true,
+        },
       });
-
+      
+      allWords.forEach((words) => {
+        tl.fromTo(
+          words,
+          {
+            color: "rgba(255, 255, 255, 0.22)",
+          },
+          {
+            color: "rgba(255, 255, 255, 1)",
+            stagger: 0.08,
+            ease: "none",
+          }
+        );
+      });
+      
       // Section labels
       gsap.utils.toArray(".section-label").forEach((el) => {
         gsap.from(el, {
@@ -129,24 +160,25 @@ export default function AboutContent() {
       </section>
 
       {/* -------- Bio -------- */}
-      <section className="about-bio">
-        <p className="bio-block">
-           RKAZN is an AI and product development studio founded by Rudra Kapadia.
-           We help businesses turn repetitive work, scattered data, and ambitious
-           ideas into intelligent systems that actually create leverage.
-        </p>
-        <p className="bio-block">
-          From AI automation and custom agents to full-stack products and data
-          platforms, we design and build solutions around the way your business
-          already works — then make them faster, smarter, and easier to scale.
-        </p>
-        <p className="bio-block">
-           No unnecessary AI hype. No generic templates. Just practical systems,
-           clean engineering, and thoughtful product design built to solve real
-           problems. Based in India, working with teams everywhere.
-        </p>
-      </section>
-
+        <section className="about-bio">
+         <ScrollRevealText>
+           RKAZN is a full-stack development studio founded by Rudra Kapadia,
+           building fast, reliable, and visually distinct web experiences for
+           brands and founders who care about the details.
+         </ScrollRevealText>
+       
+         <ScrollRevealText>
+           From interactive 3D interfaces to production-grade backend systems,
+           every project is engineered end-to-end — no templates, no
+           shortcuts, just clean code and considered design.
+         </ScrollRevealText>
+       
+         <ScrollRevealText>
+           Based in India, working with clients everywhere — RKAZN partners
+           with teams who want their product to feel as good as it works.
+         </ScrollRevealText>
+       </section>
+       
       {/* -------- Capabilities -------- */}
       <section className="about-section">
         <div className="section-label">Capabilities</div>
