@@ -142,22 +142,26 @@ export default function ServicesContent() {
               </div>
 
               <div className="service-row-body">
-                <p className="service-row-desc">{service.description}</p>
-
-                <ul className="service-row-deliverables">
-                  {service.deliverables.map((d) => (
-                    <li key={d}>{d}</li>
-                  ))}
-                </ul>
-
-                <div className="service-row-tags">
-                  {service.tags.map((t) => (
-                    <span key={t} className="service-tag">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
+               <div className="service-row-body-inner">
+                 <p className="service-row-desc">
+                   {service.description}
+                 </p>
+             
+                 <ul className="service-row-deliverables">
+                   {service.deliverables.map((d) => (
+                     <li key={d}>{d}</li>
+                   ))}
+                 </ul>
+             
+                 <div className="service-row-tags">
+                   {service.tags.map((t) => (
+                     <span key={t} className="service-tag">
+                       {t}
+                     </span>
+                   ))}
+                 </div>
+               </div>
+             </div>
             </div>
           );
         })}

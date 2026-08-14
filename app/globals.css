@@ -1491,9 +1491,7 @@ body {
   text-align: center;
   flex-shrink: 0;
 }
-.service-row-body > * {
-  overflow: hidden;
-}
+
 
 .service-row-desc {
   max-width: 640px;
@@ -1641,8 +1639,17 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
-  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 0;
+
+  transition:
+    grid-template-rows 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease,
+    margin-top 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-row-body-inner {
+  min-height: 0;
+  overflow: hidden;
 }
 
 .service-row.is-open .service-row-body {
