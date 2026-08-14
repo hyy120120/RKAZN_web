@@ -1,25 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SiteNav from "./SiteNav";
 import Footer from "./Footer";
 import Counter from "./Counter";
+import { PROJECTS } from "@/data/projects";
 
 gsap.registerPlugin(ScrollTrigger);
-
-// ⚠️ Placeholder projects — apne real projects se replace karna
-const PROJECTS = [
-  { title: "Commerce Platform Rebuild", category: "Full-Stack", tag: "web", year: "2026", accent: "#498a9f" },
-  { title: "Interactive 3D Product Configurator", category: "WebGL / Three.js", tag: "3d", year: "2026", accent: "#6fc7dd" },
-  { title: "SaaS Dashboard & Analytics", category: "Full-Stack", tag: "web", year: "2025", accent: "#498a9f" },
-  { title: "Real-Time Booking System", category: "Backend / API", tag: "backend", year: "2025", accent: "#6fc7dd" },
-  { title: "Brand Portfolio Site", category: "Frontend / Design", tag: "web", year: "2025", accent: "#498a9f" },
-  { title: "Internal Tooling Suite", category: "Full-Stack / Automation", tag: "backend", year: "2024", accent: "#6fc7dd" },
-  { title: "AI-Assisted Content Engine", category: "Backend / AI", tag: "backend", year: "2024", accent: "#6fc7dd" },
-  { title: "Particle Logo Reveal System", category: "WebGL / Three.js", tag: "3d", year: "2026", accent: "#498a9f" },
-];
 
 const FILTERS = [
   { key: "all", label: "All" },
@@ -144,7 +134,8 @@ export default function WorkContent() {
       {/* -------- Project list (cursor-follow preview) -------- */}
       <section className="work-list">
         {filtered.map((project, i) => (
-          <div
+          <Link
+            href={`/work/${project.slug}`}
             className="work-row"
             key={project.title}
             onMouseEnter={() => setHoverProject(project)}
@@ -154,7 +145,8 @@ export default function WorkContent() {
             <span className="work-row-title">{project.title}</span>
             <span className="work-row-category">{project.category}</span>
             <span className="work-row-year">{project.year}</span>
-          </div>
+            <span className="work-row-arrow">→</span>
+          </Link>
         ))}
       </section>
 
