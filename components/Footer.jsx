@@ -16,7 +16,7 @@ export default function Footer() {
         <span>/</span>
 
         <a
-          href="https://www.instagram.com/"
+          href="https://www.instagram.com/rkazn_?igsh=MWM0ajF2YXhvazlpYg=="
           target="_blank"
           rel="noopener noreferrer"
         >
