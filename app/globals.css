@@ -709,7 +709,7 @@ body {
 .about-section {
   padding: clamp(60px, 8vw, 100px) var(--edge);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  margin-top: clamp(40px, 5vw, 80px);
+  margin-top: 0;
   clear: both;
 }
  
@@ -804,6 +804,14 @@ body {
   margin-bottom: 20px;
 }
  
+@media (max-width: 768px) {
+  .about-cta-inner h2 {
+    white-space: nowrap;
+    font-size: 5.8vw;
+    letter-spacing: -0.04em;
+  }
+}
+
 .cta-link {
   color: #6fc7dd;
   text-decoration: none;
@@ -1439,9 +1447,9 @@ body {
 /* ================= SERVICES PAGE ================= */
 
 .services-list {
-  padding: 40px var(--edge) clamp(100px, 12vw, 150px);
+  padding: 40px var(--edge) 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: clamp(40px, 6vw, 80px);
+  margin-bottom: 0;
 }
 
 .service-row {
@@ -1616,7 +1624,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Services Page Premium Updates */
 .services-list {
-  padding: 40px var(--edge) clamp(60px, 8vw, 120px);
+  padding: 40px var(--edge) 20px;
+  margin-bottom: 0;
 }
 
 .service-row {

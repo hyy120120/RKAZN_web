@@ -162,20 +162,21 @@ export default function AboutContent() {
       {/* -------- Bio -------- */}
         <section className="about-bio">
          <ScrollRevealText>
-           RKAZN is a full-stack development studio founded by Rudra Kapadia,
-           building fast, reliable, and visually distinct web experiences for
-           brands and founders who care about the details.
+           RKAZN is an AI and product development studio founded by Rudra Kapadia.
+           We help businesses turn repetitive work, scattered data, and ambitious
+           ideas into intelligent systems that actually create leverage.
          </ScrollRevealText>
        
          <ScrollRevealText>
-           From interactive 3D interfaces to production-grade backend systems,
-           every project is engineered end-to-end — no templates, no
-           shortcuts, just clean code and considered design.
+          From AI automation and custom agents to full-stack products and data
+          platforms, we design and build solutions around the way your business
+          already works — then make them faster, smarter, and easier to scale.
          </ScrollRevealText>
        
          <ScrollRevealText>
-           Based in India, working with clients everywhere — RKAZN partners
-           with teams who want their product to feel as good as it works.
+           No unnecessary AI hype. No generic templates. Just practical systems,
+           clean engineering, and thoughtful product design built to solve real
+           problems. Based in India, working with teams everywhere.
          </ScrollRevealText>
        </section>
        
