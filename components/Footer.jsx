@@ -29,9 +29,9 @@ export default function Footer() {
 </span>
 
       {/* Left */}
-      <span className="name">
+      {/* <span className="name">
         Rudra Kapadia
-      </span>
+      </span> */}
 
     </footer>
   );
