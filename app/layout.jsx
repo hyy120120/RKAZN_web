@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         {/* Favicon */}
-        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+        <link rel="icon" href="/logo-heroleftside.png" type="image/svg+xml" />
         
         {/* Additional Meta Tags */}
         <meta name="theme-color" content="#000000" />

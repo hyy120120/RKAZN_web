@@ -7,7 +7,7 @@ export default function Header() {
     <header className="site-header">
       {/* Logo */}
       <div className="mark">
-        <span className="dot"></span>
+        <img src="/logo-heroleftside.png" alt="RKAZN Logo" className="dot-logo" />
         <RevealText text="RKAZN" delay={0} />
       </div>
 

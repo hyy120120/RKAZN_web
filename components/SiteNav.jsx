@@ -6,7 +6,7 @@ export default function SiteNav() {
   return (
     <header className="site-nav">
       <Link href="/" className="site-nav-mark">
-        <span className="dot"></span>
+        <img src="/logo-heroleftside.png" alt="RKAZN Logo" className="dot-logo" />
         RKAZN
       </Link>
 
