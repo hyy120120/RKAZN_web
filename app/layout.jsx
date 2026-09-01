@@ -54,6 +54,8 @@ export default function RootLayout({ children }) {
         <meta name="robots" content="index, follow" />
         <meta name="author" content="RKAZN" />
 
+<link rel="stylesheet" href="https://chatzy-kb-store.s3.amazonaws.com/icons/5ab07987-b5db-477c-82ff-1287e0883acb"/>
+<script src="https://chatzy-kb-store.s3.amazonaws.com/icons/56706cc4-b3ba-4eba-9610-f2fb07008a5c" id="ae434347-53f1-4dfe-b2e9-e5585c90e34c" className="chatzy_widget_script" defer></script>
         <Script
           id="microsoft-clarity"
           strategy="afterInteractive"
