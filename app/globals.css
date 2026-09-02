@@ -2083,3 +2083,76 @@ h1, h2, h3, h4, h5, h6 {
   align-items: flex-start;
 }
  
+/* -------- Homepage work showcase -------- */
+
+.home-work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.home-work-card {
+  text-decoration: none;
+  color: var(--fg);
+  display: block;
+}
+
+.home-work-thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.home-work-glow {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  left: 20%;
+  top: 20%;
+  border-radius: 50%;
+  filter: blur(50px);
+  opacity: 0.3;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.home-work-card:hover .home-work-glow {
+  opacity: 0.55;
+  transform: scale(1.15);
+}
+
+.home-work-year {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--fg-dim);
+}
+
+.home-work-meta {
+  padding: 16px 2px 0;
+}
+
+.home-work-meta h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.home-work-meta span {
+  font-size: 12px;
+  color: var(--fg-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.home-work-viewall {
+  display: inline-block;
+  margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .home-work-grid {
+    grid-template-columns: 1fr;
+  }
+}

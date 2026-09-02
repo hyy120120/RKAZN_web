@@ -5,6 +5,7 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SERVICES } from "@/data/services";
+import { PROJECTS } from "@/data/projects";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,6 +81,15 @@ export default function HomeContent() {
         ease: "power3.out",
         scrollTrigger: { trigger: ".home-solutions-grid", start: "top 85%", once: true },
       });
+
+      // gsap.from(".home-work-card", {
+      //   y: 30,
+      //   opacity: 0,
+      //   duration: 0.7,
+      //   stagger: 0.1,
+      //   ease: "power3.out",
+      //   scrollTrigger: { trigger: ".home-work-grid", start: "top 85%", once: true },
+      // });
 
       gsap.from(".home-problem-row", {
         x: -20,
@@ -238,17 +248,39 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* -------- Case Studies teaser -------- */}
-      <section className="about-section home-fade home-case-studies">
-        <div className="section-label">Case Studies</div>
-        <p className="detail-description">
-          Selected automation and AI projects — full breakdowns of what was
-          built, why, and the stack behind it.
-        </p>
-        <Link href="/work" className="cta-link">
-          View Selected Work →
+      {/* -------- Work showcase — real cards, not just a link --------
+      <section className="about-section home-fade">
+        <div className="section-label">Selected Work</div>
+        <div className="home-work-grid">
+          {PROJECTS.slice(0, 3).map((project) => (
+            <Link
+              href={`/work/${project.slug}`}
+              className="home-work-card"
+              key={project.slug}
+            >
+              <div
+                className="home-work-thumb"
+                style={{
+                  background: `linear-gradient(135deg, ${project.accent}40, #0a0806 75%)`,
+                }}
+              >
+                <span
+                  className="home-work-glow"
+                  style={{ background: project.accent }}
+                />
+                <span className="home-work-year">{project.year}</span>
+              </div>
+              <div className="home-work-meta">
+                <h3>{project.title}</h3>
+                <span>{project.category}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <Link href="/work" className="cta-link home-work-viewall">
+          View All Work →
         </Link>
-      </section>
+      </section> */}
 
       {/* -------- FAQs -------- */}
       <section className="about-section home-fade">
