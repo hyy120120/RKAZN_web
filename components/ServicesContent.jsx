@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SiteNav from "./SiteNav";
@@ -54,7 +55,7 @@ export default function ServicesContent() {
         duration: 0.6,
         stagger: 0.06,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".services-stats", start: "top 88%" },
+        scrollTrigger: { trigger: ".services-stats", start: "top 88%", once: true },
       });
 
       gsap.from(".service-row", {
@@ -63,7 +64,7 @@ export default function ServicesContent() {
         duration: 0.5,
         stagger: 0.06,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".services-list", start: "top 85%" },
+        scrollTrigger: { trigger: ".services-list", start: "top 85%", once: true },
       });
 
       // gsap.from(".process-step", {
@@ -160,6 +161,14 @@ export default function ServicesContent() {
                      </span>
                    ))}
                  </div>
+
+                 <Link
+                   href={`/services/${service.slug}`}
+                   className="service-row-learn-more"
+                   onClick={(e) => e.stopPropagation()}
+                 >
+                   Learn more →
+                 </Link>
                </div>
              </div>
             </div>

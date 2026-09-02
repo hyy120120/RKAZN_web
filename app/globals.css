@@ -1770,3 +1770,168 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(255, 255, 255, 0.22);
   will-change: color;
 }
+/* ================= SERVICE DETAIL PAGES ================= */
+
+.svc-hero {
+  padding: clamp(130px, 20vw, 200px) var(--edge) clamp(30px, 5vw, 60px);
+  max-width: 900px;
+}
+
+.svc-breadcrumb {
+  font-size: 11px;
+  letter-spacing: var(--tracking);
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 22px;
+}
+
+.svc-breadcrumb a {
+  color: var(--fg-dim);
+  text-decoration: none;
+}
+
+.svc-breadcrumb a:hover {
+  color: #6fc7dd;
+}
+
+.svc-hero-heading {
+  font-size: clamp(30px, 5.5vw, 64px);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.svc-intro {
+  margin-top: 22px;
+  max-width: 640px;
+  font-size: clamp(15px, 1.8vw, 18px);
+  line-height: 1.7;
+  color: var(--fg-dim);
+}
+
+/* -------- Sections -------- */
+
+.svc-sections {
+  max-width: 900px;
+  padding: 0 var(--edge) clamp(50px, 7vw, 90px);
+}
+
+.svc-section {
+  padding: clamp(32px, 4.5vw, 50px) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.svc-section-h2 {
+  font-size: clamp(20px, 2.8vw, 28px);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.svc-section-body {
+  font-size: clamp(14px, 1.7vw, 16px);
+  line-height: 1.75;
+  color: var(--fg-dim);
+  max-width: 720px;
+}
+
+.svc-sub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 22px;
+  margin-top: 8px;
+}
+
+.svc-sub-h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #6fc7dd;
+  margin-bottom: 6px;
+}
+
+.svc-sub-body {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--fg-dim);
+}
+
+/* -------- FAQ accordion (same safe grid-rows technique) -------- */
+
+.svc-faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.svc-faq-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px 0;
+  cursor: pointer;
+}
+
+.svc-faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  font-size: clamp(14px, 1.8vw, 17px);
+  font-weight: 500;
+}
+
+.svc-faq-row.is-open .svc-faq-question {
+  color: #6fc7dd;
+}
+
+.svc-faq-toggle {
+  font-size: 20px;
+  color: #6fc7dd;
+  flex-shrink: 0;
+}
+
+.svc-faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease;
+}
+
+.svc-faq-answer-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.svc-faq-row.is-open .svc-faq-answer {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+.svc-faq-answer p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--fg-dim);
+  padding-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .svc-sub-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-row-learn-more {
+  display: inline-block;
+  margin-top: 6px;
+  margin-left: 56px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: #6fc7dd;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(111, 199, 221, 0.4);
+  padding-bottom: 2px;
+  transition: opacity 0.3s ease;
+}
+
+.service-row-learn-more:hover {
+  opacity: 0.7;
+}

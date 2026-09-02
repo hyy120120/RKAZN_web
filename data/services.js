@@ -1,72 +1,217 @@
-export const SERVICES = [
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SiteNav from "./SiteNav";
+import Footer from "./Footer";
+import Counter from "./Counter";
+import { SERVICES } from "@/data/services";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const PROCESS = [
   {
-    id: "01",
-    title: "AI Automation & Workflows",
-    tagline: "Stop doing by hand what a machine can do in seconds.",
-    description:
-      "We map your repetitive, manual processes — data entry, reporting, approvals, follow-ups — and replace them with automated pipelines that run 24/7 without human input.",
-    deliverables: [
-      "Workflow audit & automation roadmap",
-      "Custom automation pipelines (no-code + code)",
-      "CRM / tool integrations",
-      "Error monitoring & alerting",
-    ],
-    tags: ["Automation", "Zapier/Make", "APIs", "Ops"],
+    step: "01",
+    title: "Discover",
+    desc: "We audit your current workflow and find exactly where AI creates real leverage — not hype.",
   },
   {
-    id: "02",
-    title: "Custom AI Agents & Chatbots",
-    tagline: "An assistant that actually knows your business.",
-    description:
-      "We build AI agents trained on your data — for customer support, lead qualification, internal knowledge search, or task execution — that plug directly into your website or product.",
-    deliverables: [
-      "Custom-trained chat/voice agents",
-      "Website & WhatsApp integration",
-      "Lead capture & qualification logic",
-      "Human hand-off when needed",
-    ],
-    tags: ["LLMs", "RAG", "Chatbots", "Voice"],
+    step: "02",
+    title: "Design & Build",
+    desc: "We design and build the solution — automation, agent, or full product — tailored to your stack.",
   },
   {
-    id: "03",
-    title: "AI-Powered Product Development",
-    tagline: "Full-stack builds with AI baked into the core.",
-    description:
-      "From idea to shipped product — we design and build web apps, dashboards, and platforms with AI features as first-class citizens, not bolted-on afterthoughts.",
-    deliverables: [
-      "Full-stack web app development",
-      "AI feature design & integration",
-      "Scalable backend architecture",
-      "Clean, maintainable codebase",
-    ],
-    tags: ["Next.js", "Node", "AI SDKs", "Cloud"],
+    step: "03",
+    title: "Integrate",
+    desc: "We plug it directly into your existing tools, website, or product with minimal disruption.",
   },
   {
-    id: "04",
-    title: "Data & Analytics",
-    tagline: "Turn scattered data into decisions.",
-    description:
-      "We connect your data sources, build pipelines, and layer AI-driven analytics on top — so you see what's actually happening in your business, not just raw numbers.",
-    deliverables: [
-      "Data pipeline & warehouse setup",
-      "AI-driven dashboards & reporting",
-      "Predictive insights & forecasting",
-      "Ongoing monitoring",
-    ],
-    tags: ["Analytics", "Dashboards", "ML", "ETL"],
-  },
-  {
-    id: "05",
-    title: "AI Strategy & Consulting",
-    tagline: "Know exactly where AI actually helps you.",
-    description:
-      "Not every problem needs AI. We audit your operations, identify the highest-leverage use cases, and give you a clear, realistic roadmap — before you spend a rupee building.",
-    deliverables: [
-      "Business & workflow audit",
-      "AI opportunity mapping",
-      "ROI-focused roadmap",
-      "Vendor/tool recommendations",
-    ],
-    tags: ["Strategy", "Consulting", "Roadmap"],
+    step: "04",
+    title: "Optimize",
+    desc: "We monitor, refine, and scale the solution as your business grows.",
   },
 ];
+
+export default function ServicesContent() {
+  const rootRef = useRef(null);
+  const [openId, setOpenId] = useState(SERVICES[0].id);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".services-hero-line .reveal-inner", {
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.06,
+        delay: 0.1,
+      });
+
+      gsap.from(".work-stat", {
+        y: 15,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.06,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".services-stats", start: "top 88%", once: true },
+      });
+
+      gsap.from(".service-row", {
+        y: 16,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.06,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".services-list", start: "top 85%", once: true },
+      });
+
+      // gsap.from(".process-step", {
+      //   y: 24,
+      //   opacity: 0,
+      //   duration: 0.6,
+      //   stagger: 0.1,
+      //   ease: "power3.out",
+      //   scrollTrigger: { trigger: ".process-grid", start: "top 95%" },
+      // });
+    }, rootRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div className="inner-page" ref={rootRef}>
+      <SiteNav />
+
+      {/* -------- Hero -------- */}
+      <section className="work-hero">
+        <h1 className="work-hero-heading">
+          <span className="services-hero-line reveal-line">
+            <span className="reveal-inner">AI Solutions That</span>
+          </span>
+          <span className="services-hero-line reveal-line">
+            <span className="reveal-inner accent-text">Actually Ship.</span>
+          </span>
+        </h1>
+        <p className="work-hero-sub">
+          We design, build, and integrate AI systems that remove manual work,
+          speed up decisions, and scale with your business — end to end.
+        </p>
+
+        <div className="work-stats services-stats">
+          <div className="work-stat">
+            <div className="work-stat-num">
+              <Counter value={SERVICES.length} />
+            </div>
+            <div className="work-stat-label">Core Services</div>
+          </div>
+          <div className="work-stat">
+            <div className="work-stat-num">
+              <Counter value={100} suffix="%" />
+            </div>
+            <div className="work-stat-label">Custom-Built, No Templates</div>
+          </div>
+          <div className="work-stat">
+            <div className="work-stat-num">
+              <Counter value={48} suffix="h" />
+            </div>
+            <div className="work-stat-label">Avg. Response Time</div>
+          </div>
+        </div>
+      </section>
+
+      {/* -------- Services accordion list -------- */}
+      <section className="services-list">
+        {SERVICES.map((service) => {
+          const isOpen = openId === service.id;
+          return (
+            <div
+              key={service.id}
+              className={`service-row ${isOpen ? "is-open" : ""}`}
+              onClick={() => setOpenId(isOpen ? null : service.id)}
+            >
+              <div className="service-row-head">
+                <span className="service-row-index">{service.id}</span>
+                <div className="service-row-titles">
+                  <h3 className="service-row-title">{service.title}</h3>
+                  <p className="service-row-tagline">{service.tagline}</p>
+                </div>
+                <span className="service-row-toggle">
+                  {isOpen ? "−" : "+"}
+                </span>
+              </div>
+
+              <div className="service-row-body">
+               <div className="service-row-body-inner">
+                 <p className="service-row-desc">
+                   {service.description}
+                 </p>
+             
+                 <ul className="service-row-deliverables">
+                   {service.deliverables.map((d) => (
+                     <li key={d}>{d}</li>
+                   ))}
+                 </ul>
+             
+                 <div className="service-row-tags">
+                   {service.tags.map((t) => (
+                     <span key={t} className="service-tag">
+                       {t}
+                     </span>
+                   ))}
+                 </div>
+
+                 <Link
+                   href={`/services/${service.slug}`}
+                   className="service-row-learn-more"
+                   onClick={(e) => e.stopPropagation()}
+                 >
+                   Learn more →
+                 </Link>
+               </div>
+             </div>
+            </div>
+          );
+        })}
+      </section>
+
+      {/* -------- Process -------- */}
+      <section className="about-section">
+        <p className="section-label">How We Work</p>
+        <div className="process-grid">
+          {PROCESS.map((p) => (
+            <div className="process-step" key={p.step}>
+              <span className="process-step-num accent-text">{p.step}</span>
+              <h4 className="process-step-title">{p.title}</h4>
+              <p className="process-step-desc">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* -------- CTA -------- */}
+      <section className="about-cta services-cta">
+        <div className="about-cta-inner">
+          <h2>
+            Let&apos;s build your <span className="accent-text">AI advantage.</span>
+          </h2>
+          <a href="mailto:info@rkazn.com" className="cta-link">
+            info@rkazn.com →
+          </a>
+        </div>
+      </section>
+
+       {/* -------- Ghost watermark logo -------- */}
+      <section className="ghost-logo-section">
+        <img
+          src="/logo-ghost.png"
+          alt="RKAZN"
+          className="ghost-logo-img"
+        />
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
