@@ -55,23 +55,23 @@ export default function RootLayout({ children }) {
         <meta name="author" content="RKAZN" />
 
 <link rel="stylesheet" href="https://chatzy-kb-store.s3.amazonaws.com/icons/5ab07987-b5db-477c-82ff-1287e0883acb"/>
-<script src="https://chatzy-kb-store.s3.amazonaws.com/icons/56706cc4-b3ba-4eba-9610-f2fb07008a5c" id="ae434347-53f1-4dfe-b2e9-e5585c90e34c" className="chatzy_widget_script" defer></script>
         <Script
-          id="microsoft-clarity"
+          src="https://chatzy-kb-store.s3.amazonaws.com/icons/56706cc4-b3ba-4eba-9610-f2fb07008a5c"
+          id="ae434347-53f1-4dfe-b2e9-e5585c90e34c"
+          className="chatzy_widget_script"
           strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);
-                t.async=1;
-                t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];
-                y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "y5vk216p7h");
-            `,
-          }}
         />
+        {/* <!-- Google tag (gtag.js) --> */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-WG1N2M5YNL"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-WG1N2M5YNL');`}
+        </Script>
       </head>
       <body>{children}</body>
     </html>
