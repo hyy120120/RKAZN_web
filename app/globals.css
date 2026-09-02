@@ -1935,3 +1935,151 @@ h1, h2, h3, h4, h5, h6 {
 .service-row-learn-more:hover {
   opacity: 0.7;
 }
+
+
+/* ================= HOMEPAGE CONTENT (below hero) ================= */
+ 
+.home-content {
+  position: relative;
+  background: var(--bg);
+  color: var(--fg);
+}
+ 
+.home-intro {
+  padding: clamp(70px, 10vw, 120px) var(--edge) clamp(40px, 6vw, 70px);
+  max-width: 900px;
+}
+ 
+.home-h1 {
+  font-size: clamp(30px, 5.5vw, 58px);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+ 
+.home-value-prop {
+  margin-top: 22px;
+  max-width: 620px;
+  font-size: clamp(15px, 1.8vw, 18px);
+  line-height: 1.7;
+  color: var(--fg-dim);
+}
+ 
+.home-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+ 
+.home-cta-primary {
+  padding: 13px 26px;
+  background: #6fc7dd;
+  color: #08090a;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: opacity 0.3s ease;
+}
+ 
+.home-cta-primary:hover { opacity: 0.85; }
+ 
+.home-cta-secondary {
+  padding: 13px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--fg);
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+ 
+.home-cta-secondary:hover { border-color: #6fc7dd; }
+ 
+/* -------- Solutions grid -------- */
+ 
+.home-solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.08);
+}
+ 
+.home-solution-card {
+  position: relative;
+  background: var(--bg);
+  padding: 26px 22px;
+  text-decoration: none;
+  color: var(--fg);
+  transition: background 0.3s ease;
+}
+ 
+.home-solution-card:hover {
+  background: rgba(111, 199, 221, 0.06);
+}
+ 
+.home-solution-index {
+  font-size: 11px;
+  color: var(--fg-dim);
+}
+ 
+.home-solution-card h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 10px 0 8px;
+}
+ 
+.home-solution-card p {
+  font-size: 13px;
+  color: var(--fg-dim);
+  line-height: 1.5;
+}
+ 
+.home-solution-arrow {
+  position: absolute;
+  right: 22px;
+  top: 26px;
+  color: #6fc7dd;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+ 
+.home-solution-card:hover .home-solution-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+ 
+/* -------- Problems list -------- */
+ 
+.home-problems-list {
+  display: flex;
+  flex-direction: column;
+}
+ 
+.home-problem-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: clamp(14px, 1.8vw, 17px);
+  color: var(--fg-dim);
+}
+ 
+.home-problem-mark {
+  color: #a04848;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+ 
+.home-case-studies {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+}
+ 
