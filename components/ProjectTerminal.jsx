@@ -144,12 +144,26 @@ export default function ProjectTerminal({ project }) {
 
       <section className="detail-sections">
         <div className="detail-section">
-          <div className="section-label">Overview</div>
+          <h2 className="section-label">Overview</h2>
           <p className="detail-description">{project.description}</p>
         </div>
 
+        {project.challenge && (
+          <div className="detail-section">
+            <h2 className="section-label">The Challenge</h2>
+            <p className="detail-description">{project.challenge}</p>
+          </div>
+        )}
+
+        {project.approach && (
+          <div className="detail-section">
+            <h2 className="section-label">Our Approach</h2>
+            <p className="detail-description">{project.approach}</p>
+          </div>
+        )}
+
         <div className="detail-section">
-          <div className="section-label">Tech Stack</div>
+          <h2 className="section-label">Tech Stack</h2>
           <div className="detail-stack-grid">
             {project.stack.map((tech) => (
               <span className="detail-stack-chip" key={tech}>
@@ -160,7 +174,7 @@ export default function ProjectTerminal({ project }) {
         </div>
 
         <div className="detail-section">
-          <div className="section-label">Key Highlights</div>
+          <h2 className="section-label">The Result</h2>
           <div className="detail-highlights">
             {project.highlights.map((h) => (
               <div className="detail-highlight" key={h}>

@@ -161,7 +161,7 @@ export default function HomeContent() {
 
       {/* -------- AI Solutions We Build -------- */}
       <section className="about-section home-fade">
-        <div className="section-label">AI Solutions We Build</div>
+        <h2 className="section-label">AI Solutions We Build</h2>
         <div className="home-solutions-grid">
           {SERVICES.map((s) => (
             <Link
@@ -180,7 +180,7 @@ export default function HomeContent() {
 
       {/* -------- Business Problems We Solve -------- */}
       <section className="about-section home-fade">
-        <div className="section-label">Business Problems We Solve</div>
+        <h2 className="section-label">Business Problems We Solve</h2>
         <div className="home-problems-list">
           {PROBLEMS.map((p) => (
             <div className="home-problem-row" key={p}>
@@ -193,7 +193,7 @@ export default function HomeContent() {
 
       {/* -------- How RKAZN Works -------- */}
       <section className="about-section home-fade">
-        <div className="section-label">How RKAZN Works</div>
+        <h2 className="section-label">How RKAZN Works</h2>
         <div className="process-track home-process-track">
           <div className="process-line">
             <div className="process-line-fill home-process-line-fill" />
@@ -214,7 +214,7 @@ export default function HomeContent() {
 
       {/* -------- Use Cases -------- */}
       <section className="about-section home-fade">
-        <div className="section-label">AI Automation Use Cases</div>
+        <h2 className="section-label">AI Automation Use Cases</h2>
         <div className="capability-grid">
           {USE_CASES.map((u, i) => (
             <div className="capability-row" key={u}>
@@ -227,7 +227,7 @@ export default function HomeContent() {
 
       {/* -------- Industries -------- */}
       <section className="about-section home-fade">
-        <div className="section-label">Industries We Serve</div>
+        <h2 className="section-label">Industries We Serve</h2>
         <div className="stack-grid">
           {INDUSTRIES.map((i) => (
             <span className="stack-chip" key={i}>{i}</span>
@@ -237,7 +237,7 @@ export default function HomeContent() {
 
       {/* -------- Why RKAZN -------- */}
       <section className="about-section home-fade">
-        <div className="section-label">Why RKAZN</div>
+        <h2 className="section-label">Why RKAZN</h2>
         <div className="capability-grid">
           {WHY_RKAZN.map((w, i) => (
             <div className="capability-row" key={w}>
@@ -250,7 +250,7 @@ export default function HomeContent() {
 
       {/* -------- Work showcase — real cards, not just a link --------
       <section className="about-section home-fade">
-        <div className="section-label">Selected Work</div>
+        <h2 className="section-label">Selected Work</h2>
         <div className="home-work-grid">
           {PROJECTS.slice(0, 3).map((project) => (
             <Link
@@ -284,7 +284,7 @@ export default function HomeContent() {
 
       {/* -------- FAQs -------- */}
       <section className="about-section home-fade">
-        <div className="section-label">Frequently Asked Questions</div>
+        <h2 className="section-label">Frequently Asked Questions</h2>
         <div className="svc-faq-list home-faq-list">
           {HOME_FAQS.map((faq, i) => {
             const isOpen = openFaq === i;

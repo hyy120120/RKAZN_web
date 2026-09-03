@@ -2083,76 +2083,69 @@ h1, h2, h3, h4, h5, h6 {
   align-items: flex-start;
 }
  
-/* -------- Homepage work showcase -------- */
+/* ================= ABOUT — TRUST / EEAT BLOCKS ================= */
 
-.home-work-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+.founder-block {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  max-width: 640px;
 }
 
-.home-work-card {
-  text-decoration: none;
-  color: var(--fg);
-  display: block;
-}
-
-.home-work-thumb {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.home-work-glow {
-  position: absolute;
-  width: 60%;
-  height: 60%;
-  left: 20%;
-  top: 20%;
+.founder-avatar {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  filter: blur(50px);
-  opacity: 0.3;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  background: rgba(111, 199, 221, 0.12);
+  border: 1px solid rgba(111, 199, 221, 0.3);
+  color: #6fc7dd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
 }
 
-.home-work-card:hover .home-work-glow {
-  opacity: 0.55;
-  transform: scale(1.15);
-}
-
-.home-work-year {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  font-size: 11px;
-  letter-spacing: 0.5px;
-  color: var(--fg-dim);
-}
-
-.home-work-meta {
-  padding: 16px 2px 0;
-}
-
-.home-work-meta h3 {
-  font-size: 16px;
+.founder-name {
+  font-size: 18px;
   font-weight: 600;
 }
 
-.home-work-meta span {
+.founder-role {
   font-size: 12px;
+  color: #6fc7dd;
+  letter-spacing: 0.3px;
+  margin: 4px 0 12px;
+}
+
+.founder-bio {
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--fg-dim);
+}
+
+.contact-block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.contact-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: var(--tracking);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  color: var(--fg-dim);
+  margin-bottom: 8px;
 }
 
-.home-work-viewall {
-  display: inline-block;
-  margin-top: 30px;
+.contact-value {
+  font-size: 15px;
+  color: var(--fg);
+  text-decoration: none;
 }
 
-@media (max-width: 768px) {
-  .home-work-grid {
-    grid-template-columns: 1fr;
-  }
+a.contact-value:hover {
+  color: #6fc7dd;
 }

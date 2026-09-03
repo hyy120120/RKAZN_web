@@ -182,7 +182,7 @@ export default function AboutContent() {
        
       {/* -------- Capabilities -------- */}
       <section className="about-section">
-        <div className="section-label">Capabilities</div>
+        <h2 className="section-label">Capabilities</h2>
         <div className="capability-grid">
           {CAPABILITIES.map((item, i) => (
             <div className="capability-row" key={item}>
@@ -197,13 +197,59 @@ export default function AboutContent() {
 
       {/* -------- Stack -------- */}
       <section className="about-section">
-        <div className="section-label">Tech Stack</div>
+        <h2 className="section-label">Tech Stack</h2>
         <div className="stack-grid">
           {STACK.map((tech) => (
             <span className="stack-chip" key={tech}>
               {tech}
             </span>
           ))}
+        </div>
+      </section>
+
+      {/* -------- Founder -------- */}
+      <section className="about-section">
+        <h2 className="section-label">Who's Behind RKAZN</h2>
+        <div className="founder-block">
+          <div className="founder-avatar">RK</div>
+          <div>
+            <h3 className="founder-name">Rudra Kapadia</h3>
+            <p className="founder-role">Founder &amp; Lead Developer, RKAZN</p>
+            <p className="founder-bio">
+              Rudra founded RKAZN to bring proper software engineering
+              discipline to AI automation — clean code, real integrations,
+              and systems businesses can actually depend on, not fragile
+              no-code stacks bolted together.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* -------- Who We Work With -------- */}
+      <section className="about-section">
+        <h2 className="section-label">Who We Work With</h2>
+        <p className="detail-description">
+          RKAZN works with small and mid-sized businesses, agencies, and
+          founders who have a real, repeatable process they want automated
+          or a specific problem generic AI tools can't solve — not
+          businesses looking for a one-size-fits-all template.
+        </p>
+      </section>
+
+      {/* -------- Contact / Location -------- */}
+      <section className="about-section">
+        <h2 className="section-label">Get In Touch</h2>
+        <div className="contact-block">
+          <div>
+            <span className="contact-label">Email</span>
+            <a href="mailto:info@rkazn.com" className="contact-value">
+              info@rkazn.com
+            </a>
+          </div>
+          <div>
+            <span className="contact-label">Location</span>
+            <span className="contact-value">India — working with clients worldwide</span>
+          </div>
         </div>
       </section>
 
@@ -240,7 +286,7 @@ export default function AboutContent() {
        
       </section>
 
-      <Footer />
+      <Footer variant="static" />
     </div>
   );
 }

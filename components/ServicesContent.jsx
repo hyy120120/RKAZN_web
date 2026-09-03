@@ -178,7 +178,7 @@ export default function ServicesContent() {
 
       {/* -------- Process -------- */}
       <section className="about-section">
-        <p className="section-label">How We Work</p>
+        <h2 className="section-label">How We Work</h2>
         <div className="process-grid">
           {PROCESS.map((p) => (
             <div className="process-step" key={p.step}>

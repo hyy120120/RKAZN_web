@@ -143,7 +143,7 @@ export default function ServicePageContent({ page }) {
 
       {/* -------- FAQs -------- */}
       <section className="svc-faq about-section">
-        <div className="section-label">Frequently Asked Questions</div>
+        <h2 className="section-label">Frequently Asked Questions</h2>
         <div className="svc-faq-list">
           {page.faqs.map((faq, i) => {
             const isOpen = openFaq === i;
