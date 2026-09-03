@@ -18,9 +18,21 @@ export default function BlogIndex() {
       gsap.from(".blog-hero-line .reveal-inner", {
         yPercent: 115, opacity: 0, duration: 1, ease: "power4.out", stagger: 0.08, delay: 0.15,
       });
-      gsap.from(".blog-index-row", {
-        y: 20, opacity: 0, duration: 0.6, stagger: 0.08, ease: "power3.out",
-        scrollTrigger: { trigger: ".blog-index-list", start: "top 85%", once: true },
+      // Har row ka apna alag trigger — jab wahi row screen pe aaye tabhi wo
+      // fully visible ho jaaye. Poori list ek saath trigger karne se neeche
+      // wale items scroll-speed pe depend karke "stuck" reh jaate the.
+      gsap.utils.toArray(".blog-index-row").forEach((row) => {
+        gsap.fromTo(
+          row,
+          { y: 20, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.5,
+            ease: "power3.out",
+            scrollTrigger: { trigger: row, start: "top 95%", once: true },
+          }
+        );
       });
     }, rootRef);
     return () => ctx.revert();
