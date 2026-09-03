@@ -1,0 +1,131 @@
+/* Blog-specific styles — is file ko app/blog/layout.jsx khud import karta hai,
+   isliye globals.css me kuch add karne ki zaroorat nahi hai */
+
+.blog-hero {
+  padding: clamp(130px, 20vw, 200px) var(--edge) clamp(30px, 5vw, 60px);
+  max-width: 900px;
+}
+
+.blog-hero-heading {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: clamp(30px, 5.5vw, 64px);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.blog-meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--fg-dim);
+}
+
+.blog-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--edge) clamp(60px, 8vw, 100px);
+}
+
+.richtext-h2 {
+  font-size: clamp(20px, 2.6vw, 27px);
+  font-weight: 600;
+  margin: clamp(34px, 5vw, 50px) 0 16px;
+  color: var(--fg);
+}
+
+.richtext-p {
+  font-size: clamp(14px, 1.7vw, 16px);
+  line-height: 1.8;
+  color: var(--fg-dim);
+  margin-bottom: 18px;
+}
+
+.richtext-ul {
+  margin: 0 0 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: disc;
+}
+
+.richtext-ul li {
+  font-size: clamp(14px, 1.7vw, 16px);
+  line-height: 1.7;
+  color: var(--fg-dim);
+}
+
+.richtext-quote {
+  margin: 28px 0;
+  padding: 18px 24px;
+  border-left: 2px solid #6fc7dd;
+  font-size: clamp(15px, 1.9vw, 19px);
+  font-style: italic;
+  color: var(--fg);
+  background: rgba(111, 199, 221, 0.05);
+}
+
+.richtext-link {
+  color: #6fc7dd !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.blog-index-list {
+  padding: 0 var(--edge) clamp(80px, 10vw, 140px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.blog-index-row {
+  display: grid;
+  grid-template-columns: 44px 1fr 140px 30px;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: opacity 0.3s ease, padding-left 0.3s ease;
+}
+
+.blog-index-row:hover {
+  padding-left: 12px;
+}
+
+.blog-index-list:hover .blog-index-row:not(:hover) {
+  opacity: 0.4;
+}
+
+.blog-index-meta h3 {
+  font-size: clamp(17px, 2.4vw, 22px);
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--fg);
+}
+
+.blog-index-meta p {
+  font-size: 13px;
+  color: var(--fg-dim);
+  line-height: 1.5;
+  max-width: 480px;
+}
+
+.blog-index-cluster {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #6fc7dd;
+}
+
+@media (max-width: 768px) {
+  .blog-index-row {
+    grid-template-columns: 30px 1fr;
+    row-gap: 6px;
+  }
+  .blog-index-cluster {
+    grid-column: 2;
+  }
+}
