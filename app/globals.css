@@ -1017,16 +1017,6 @@ body {
     transition: opacity 0.45s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease;
   }
 
-  .site-nav-links a::before {
-    counter-increment: menu-item;
-    content: "0" counter(menu-item);
-    width: 24px;
-    color: #6fc7dd;
-    font-family: monospace;
-    font-size: 10px;
-    letter-spacing: 1px;
-  }
-
   .site-nav-links.is-open a {
     opacity: 1;
     transform: translateY(0);
