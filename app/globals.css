@@ -216,6 +216,10 @@ body {
   opacity: 0.6;
 }
 
+.hero-mobile-nav {
+  display: none;
+}
+
 /* ================= FOOTER ================= */
 
 .site-footer {
@@ -293,8 +297,22 @@ body {
     padding: 24px;
   }
 
+  .site-header .site-nav-toggle {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+  }
+
   .header-nav {
     gap: 24px;
+  }
+
+  .site-header .header-nav {
+    display: none;
+  }
+
+  .site-header .hero-mobile-nav {
+    display: flex;
   }
 
   .site-footer {
