@@ -1,0 +1,114 @@
+.roi-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  padding: 0 var(--edge) clamp(80px, 10vw, 140px);
+  max-width: 1100px;
+}
+
+.roi-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.roi-field label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--fg-dim);
+  margin-bottom: 10px;
+}
+
+.roi-value {
+  color: #6fc7dd;
+  font-weight: 600;
+}
+
+.roi-field input[type="range"] {
+  width: 100%;
+  accent-color: #6fc7dd;
+  cursor: pointer;
+}
+
+.roi-hint {
+  font-size: 11px;
+  color: var(--fg-dim);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.roi-output {
+  position: sticky;
+  top: 100px;
+  align-self: flex-start;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.roi-output-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.roi-output-primary {
+  border-color: rgba(111, 199, 221, 0.35);
+  background: rgba(111, 199, 221, 0.06);
+}
+
+.roi-output-label {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+.roi-output-num {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 700;
+  color: #6fc7dd;
+}
+
+.roi-output-num-sm {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.roi-output-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.roi-disclaimer {
+  font-size: 11px;
+  color: var(--fg-dim);
+  line-height: 1.6;
+}
+
+.roi-cta {
+  text-align: center;
+  margin-top: 6px;
+}
+
+@media (max-width: 900px) {
+  .roi-layout {
+    grid-template-columns: 1fr;
+  }
+  .roi-output {
+    position: static;
+  }
+  .roi-output-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

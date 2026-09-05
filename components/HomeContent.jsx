@@ -309,6 +309,18 @@ export default function HomeContent() {
         </div>
       </section>
 
+      {/* -------- ROI Calculator callout -------- */}
+      <section className="home-fade roi-callout-section">
+        <Link href="/tools/roi-calculator" className="roi-callout-banner">
+          <span className="roi-callout-tag">Free Tool</span>
+          <div className="roi-callout-text">
+            <h3>Not sure how much manual work is costing you?</h3>
+            <p>Use our free AI Automation ROI Calculator — no email required.</p>
+          </div>
+          <span className="roi-callout-arrow">→</span>
+        </Link>
+      </section>
+
       {/* -------- Final CTA -------- */}
       <section className="about-cta home-fade">
         <div className="about-cta-inner">

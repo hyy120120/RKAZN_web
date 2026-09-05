@@ -13,6 +13,7 @@ export default function sitemap() {
     { url: `${base}/work`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
+    { url: `${base}/tools/roi-calculator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
   ];
 
   const serviceRoutes = SERVICE_PAGES.map((p) => ({

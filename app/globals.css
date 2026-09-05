@@ -2271,3 +2271,76 @@ h1, h2, h3, h4, h5, h6 {
 a.contact-value:hover {
   color: #6fc7dd;
 }
+/* ================= ROI CALCULATOR CALLOUT (Home) ================= */
+
+.roi-callout-section {
+  padding: 0 var(--edge) clamp(50px, 7vw, 90px);
+}
+
+.roi-callout-banner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  padding: clamp(22px, 3vw, 34px) clamp(24px, 3.5vw, 40px);
+
+  background: rgba(111, 199, 221, 0.06);
+  border: 1px solid rgba(111, 199, 221, 0.25);
+  border-radius: 14px;
+
+  text-decoration: none;
+  color: var(--fg);
+
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.roi-callout-banner:hover {
+  background: rgba(111, 199, 221, 0.1);
+  border-color: rgba(111, 199, 221, 0.45);
+}
+
+.roi-callout-tag {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(111, 199, 221, 0.15);
+  color: #6fc7dd;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.roi-callout-text {
+  flex: 1;
+}
+
+.roi-callout-text h3 {
+  font-size: clamp(16px, 2.2vw, 20px);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.roi-callout-text p {
+  font-size: 13px;
+  color: var(--fg-dim);
+}
+
+.roi-callout-arrow {
+  flex-shrink: 0;
+  font-size: 22px;
+  color: #6fc7dd;
+  transition: transform 0.3s ease;
+}
+
+.roi-callout-banner:hover .roi-callout-arrow {
+  transform: translateX(6px);
+}
+
+@media (max-width: 640px) {
+  .roi-callout-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}

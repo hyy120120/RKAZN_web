@@ -54,6 +54,7 @@ export default function SiteNav() {
         <Link href="/services" onClick={closeMenu}>Services</Link>
         <Link href="/industries" onClick={closeMenu}>Industries</Link>
         <Link href="/blog" onClick={closeMenu}>Blog</Link>
+        <Link href="/tools/roi-calculator" onClick={closeMenu}>Tools</Link>
         <Link href="/about" onClick={closeMenu}>About</Link>
       </nav>
     </header>
