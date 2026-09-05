@@ -173,6 +173,8 @@ body {
 }
 
 .mark {
+  position: relative;
+  z-index: 4;
   display: flex;
   align-items: center;
   gap: 8px;
