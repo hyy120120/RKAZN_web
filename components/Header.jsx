@@ -59,22 +59,6 @@ export default function Header() {
         <span />
       </button>
 
-      {/* Navigation */}
-      <nav
-        className="header-nav"
-        aria-label="Primary Navigation"
-      >
-        {/* <a href="/work">
-          <RevealText text="Work" delay={0.3} />
-        </a> */}
-        <a href="/services">
-          <RevealText text="Services" delay={0.3} />
-        </a>
-        <a href="/about">
-          <RevealText text="About" delay={0.35} />
-        </a>
-      </nav>
-
       <nav
         id="hero-navigation"
         className={`hero-mobile-nav site-nav-links${menuOpen ? " is-open" : ""}`}
