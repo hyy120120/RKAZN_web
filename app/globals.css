@@ -35,6 +35,33 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+html {
+  scrollbar-color: rgba(245, 243, 239, 0.34) var(--bg);
+  scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+  background: var(--bg);
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--bg);
+  border: 0;
+  box-shadow: none;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgba(245, 243, 239, 0.34);
+  border: 3px solid var(--bg);
+  border-radius: 999px;
+  box-shadow: none;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 243, 239, 0.5);
+}
+
 /* ================= HERO ================= */
 
 .hero {
@@ -809,6 +836,11 @@ body {
 }
 
 @media (min-width: 769px) {
+  .site-nav .site-nav-mark {
+    position: relative;
+    z-index: 3;
+  }
+
   .site-nav .site-nav-toggle {
     position: relative;
     z-index: 3;
