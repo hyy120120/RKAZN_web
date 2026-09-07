@@ -7,9 +7,9 @@ export const SERVICE_PAGES = [
   {
     slug: "ai-automation",
     navLabel: "AI Automation",
-    metaTitle: "AI Automation Services for Smarter Business Operations",
+    metaTitle: "AI Automation Services for Businesses | RKAZN",
     metaDescription:
-      "Custom AI automation services — workflow automation, AI agents, and business process automation that removes manual work and scales with your business.",
+      "AI automation services for businesses that reduce manual work, automate workflows, improve operations, and connect your existing tools.",
     h1: "AI Automation Services for Smarter Business Operations",
     intro:
       "Manual, repetitive work slows every growing business down. RKAZN designs and builds AI automation systems that take the repetitive parts of your operations — data entry, follow-ups, reporting, approvals — off your team's plate, so people spend time on work that actually needs a human.",
@@ -79,9 +79,9 @@ export const SERVICE_PAGES = [
   {
     slug: "custom-ai-solutions",
     navLabel: "Custom AI Solutions",
-    metaTitle: "Custom AI Solutions Built Around Your Business",
+    metaTitle: "Custom AI Development & Solutions | RKAZN",
     metaDescription:
-      "Custom AI solutions — AI assistants, knowledge systems, internal tools, and integrations — designed and built specifically around how your business works.",
+      "Custom AI development services for businesses — AI assistants, agents, knowledge systems, internal tools, and integrations built around your data and workflows.",
     h1: "Custom AI Solutions Built Around Your Business",
     intro:
       "Off-the-shelf AI tools solve generic problems. Your business isn't generic. RKAZN designs and builds custom AI solutions — assistants, knowledge systems, internal tools — engineered specifically around your data, your workflow, and your goals.",
@@ -133,9 +133,9 @@ export const SERVICE_PAGES = [
   {
     slug: "ai-agent-development",
     navLabel: "AI Agent Development",
-    metaTitle: "AI Agent Development Services for Business Automation",
+    metaTitle: "AI Agent Development Services | RKAZN",
     metaDescription:
-      "Custom AI agent development — agents that take real actions inside your business systems, not just answer questions. Built for support, sales, and operations.",
+      "AI agent development services for businesses. Build custom AI agents that automate sales, support, lead qualification, research, and operations.",
     h1: "AI Agent Development Services for Business Automation",
     intro:
       "Most chatbots can only answer questions. RKAZN builds AI agents that take real action — qualifying a lead, updating a record, scheduling a follow-up — directly inside the tools your business already runs on.",
@@ -204,9 +204,9 @@ export const SERVICE_PAGES = [
   {
     slug: "ai-workflow-automation",
     navLabel: "AI Workflow Automation",
-    metaTitle: "AI Workflow Automation Services",
+    metaTitle: "AI Workflow Automation Services | RKAZN",
     metaDescription:
-      "AI-powered workflow automation for lead management, onboarding, support, and reporting — connected across your existing tools.",
+    "AI workflow automation services for businesses. Automate lead management, onboarding, support, reporting, and repetitive processes across your existing tools.",
     h1: "AI Workflow Automation Services",
     intro:
       "Every business runs on workflows — lead to customer, request to resolution, data to report. RKAZN automates those workflows end-to-end, using AI to handle the judgment calls that simple automation tools can't.",
@@ -263,9 +263,9 @@ export const SERVICE_PAGES = [
   {
     slug: "business-process-automation",
     navLabel: "Business Process Automation",
-    metaTitle: "Business Process Automation Services",
+    metaTitle: "Business Process Automation Services | RKAZN",
     metaDescription:
-      "Business process automation services — mapping and automating real operational processes, from lead to close, with AI where it genuinely adds value.",
+      "Business process automation services that streamline sales, support, onboarding, reporting, and recurring operations with automation and AI.",
     h1: "Business Process Automation Services",
     intro:
       "Business process automation isn't about buzzwords — it's about looking at how work actually flows through your business and removing the friction. RKAZN maps your real processes and automates them end-to-end.",
