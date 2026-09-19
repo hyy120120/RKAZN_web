@@ -6,6 +6,9 @@ import { INDUSTRIES } from "@/data/industries";
 export const metadata = {
   title: "Industries We Serve",
   description: "AI automation solutions built around the specific needs of your industry.",
+  alternates: {
+    canonical: "/industries",
+  },
 };
 
 export default function IndustriesPage() {

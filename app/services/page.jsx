@@ -4,6 +4,9 @@ export const metadata = {
   title: "Services",
   description:
     "AI automation, custom agents, full-stack AI product development, and consulting — by RKAZN.",
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 export default function ServicesPage() {
