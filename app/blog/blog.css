@@ -73,6 +73,31 @@
   text-underline-offset: 3px;
 }
 
+.richtext-figure {
+  margin: clamp(28px, 4vw, 44px) 0;
+}
+
+.richtext-figure-svg {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+}
+
+.richtext-figure-svg svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.richtext-figcaption {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--fg-dim);
+  text-align: center;
+}
+
 .blog-index-list {
   padding: 0 var(--edge) clamp(80px, 10vw, 140px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);

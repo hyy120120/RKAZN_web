@@ -39,6 +39,19 @@ export default function RichText({ blocks }) {
         if (block.type === "quote") {
           return <blockquote className="richtext-quote" key={i}>{block.text}</blockquote>;
         }
+        if (block.type === "image") {
+          return (
+            <figure className="richtext-figure" key={i}>
+              <div
+                className="richtext-figure-svg"
+                dangerouslySetInnerHTML={{ __html: block.svg }}
+              />
+              {block.caption && (
+                <figcaption className="richtext-figcaption">{block.caption}</figcaption>
+              )}
+            </figure>
+          );
+        }
         return null;
       })}
     </>

@@ -159,6 +159,44 @@ export const BLOG_POSTS = [
       { type: "p", text: "Honestly? Read our [About](/about) page and judge for yourself — and if it's relevant, our [Custom AI Solutions](/services/custom-ai-solutions) page shows exactly how we approach builds that need to last." },
     ],
   },
+  {
+    slug: "how-to-calculate-roi-of-business-automation",
+    title: "How to Calculate the ROI of Business Automation (Before You Build Anything)",
+    metaDescription:
+      "A practical framework for calculating the real ROI of automating a business process — the numbers that matter, and the ones that mislead you.",
+    excerpt:
+      "Most automation ROI math only counts the hours saved. Here's the fuller picture — including the costs people forget to count.",
+    date: "2026-09-20",
+    readTime: "6 min read",
+    cluster: "Business Automation",
+    content: [
+      { type: "p", text: "Before you automate anything, you should be able to answer one question in plain numbers: what does this actually save, and what does it actually cost? Most businesses skip this step and go straight to \"AI can probably help here.\" That's how automation budgets get wasted on the wrong processes." },
+      { type: "h2", text: "The math people usually get wrong" },
+      { type: "p", text: "The typical calculation is: hours saved per week × hourly cost × 52. That number is almost always too optimistic, because it assumes the process runs perfectly, every time, with zero exceptions. Real processes have exceptions, and exceptions need a human — which means the real time saved is lower than the theoretical maximum." },
+      {
+        type: "image",
+        caption: "What most ROI estimates count vs. what actually determines payback",
+        svg: "<svg viewBox='0 0 700 300' xmlns='http://www.w3.org/2000/svg'><rect width='700' height='300' fill='none'/><text x='24' y='30' fill='#f5f3ef' font-family='Arial, sans-serif' font-size='15' font-weight='600'>What people usually estimate</text><rect x='24' y='45' width='300' height='34' rx='6' fill='#6fc7dd' opacity='0.85'/><text x='36' y='67' fill='#0a0806' font-family='Arial, sans-serif' font-size='13' font-weight='600'>Hours saved × hourly rate</text><text x='24' y='120' fill='#f5f3ef' font-family='Arial, sans-serif' font-size='15' font-weight='600'>What actually determines payback</text><rect x='24' y='135' width='300' height='30' rx='6' fill='#6fc7dd' opacity='0.85'/><text x='36' y='155' fill='#0a0806' font-family='Arial, sans-serif' font-size='12.5' font-weight='600'>Hours saved on the happy path</text><rect x='24' y='172' width='260' height='30' rx='6' fill='#6fc7dd' opacity='0.55'/><text x='36' y='192' fill='#0a0806' font-family='Arial, sans-serif' font-size='12.5' font-weight='600'>− time spent handling exceptions</text><rect x='24' y='209' width='300' height='30' rx='6' fill='#6fc7dd' opacity='0.35'/><text x='36' y='229' fill='#f5f3ef' font-family='Arial, sans-serif' font-size='12.5' font-weight='600'>− build, monitoring &amp; upkeep cost</text><rect x='24' y='246' width='190' height='30' rx='6' fill='#6fc7dd'/><text x='36' y='266' fill='#0a0806' font-family='Arial, sans-serif' font-size='12.5' font-weight='700'>= real net time saved</text></svg>",
+      },
+      { type: "h2", text: "Four numbers to actually collect first" },
+      { type: "ul", items: [
+        "Volume — how many times this process actually runs per week, not per year averaged out",
+        "Current cost per instance — real fully-loaded time, not just the 'quick part' someone remembers",
+        "Exception rate — what % of cases need a human to step in, and how long that takes",
+        "One-time build cost + ongoing monitoring cost — automation isn't free to maintain",
+      ]},
+      { type: "h2", text: "The break-even question that actually matters" },
+      { type: "p", text: "Instead of asking \"how much time will this save,\" ask: \"at what volume does this pay for itself, and are we actually at that volume?\" A process that runs 5 times a week almost never justifies a custom build. A process that runs 500 times a week almost always does — even with a fairly high exception rate." },
+      {
+        type: "image",
+        caption: "Break-even shifts with volume, not with how tedious the task feels",
+        svg: "<svg viewBox='0 0 700 260' xmlns='http://www.w3.org/2000/svg'><rect width='700' height='260' fill='none'/><line x1='60' y1='20' x2='60' y2='220' stroke='rgba(245,243,239,0.25)' stroke-width='1'/><line x1='60' y1='220' x2='670' y2='220' stroke='rgba(245,243,239,0.25)' stroke-width='1'/><text x='10' y='24' fill='#f5f3ef' font-family='Arial, sans-serif' font-size='11'>Cost</text><text x='600' y='240' fill='#f5f3ef' font-family='Arial, sans-serif' font-size='11'>Volume →</text><path d='M60 210 L670 40' stroke='#f5f3ef' stroke-width='2' fill='none' opacity='0.55'/><text x='420' y='95' fill='#f5f3ef' font-family='Arial, sans-serif' font-size='12'>Cost of doing it manually</text><path d='M60 190 Q 300 210 670 150' stroke='#6fc7dd' stroke-width='2.5' fill='none'/><text x='420' y='175' fill='#6fc7dd' font-family='Arial, sans-serif' font-size='12' font-weight='600'>Cost with automation (build + upkeep)</text><circle cx='300' cy='158' r='5' fill='#f5f3ef'/><text x='230' y='150' fill='#f5f3ef' font-family='Arial, sans-serif' font-size='11'>Break-even point</text></svg>",
+      },
+      { type: "quote", text: "If you can't say what volume makes this worth it, you're not ready to automate it yet — you're ready to automate a guess." },
+      { type: "h2", text: "Run your own numbers" },
+      { type: "p", text: "We built a free [ROI calculator](/tools/roi-calculator) that walks through exactly this — volume, current cost, and a realistic (not inflated) automation estimate. No email required. If the numbers come back close, that's usually a sign the process is worth a proper look; if you want that look, [Business Process Automation](/services/business-process-automation) is where we'd start." },
+    ],
+  },
 ];
 
 export function getBlogPostBySlug(slug) {
