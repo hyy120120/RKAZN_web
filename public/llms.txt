@@ -1,0 +1,33 @@
+# RKAZN
+
+> AI and product development studio founded by Rudra Kapadia. RKAZN helps
+> businesses turn repetitive manual work, scattered data, and ambitious
+> product ideas into intelligent, custom-built systems — AI automation, AI
+> agents, and full-stack AI products designed around how the business
+> already works, rather than forcing a switch to new platforms.
+
+## Services
+
+- [AI Automation Services](https://rkazn.com/services/ai-automation): End-to-end AI-driven automation of manual business workflows.
+- [Custom AI Solutions](https://rkazn.com/services/custom-ai-solutions): Bespoke AI systems built for use cases off-the-shelf tools don't cover.
+- [AI Agent Development](https://rkazn.com/services/ai-agent-development): Autonomous AI agents that handle multi-step business tasks.
+- [AI Workflow Automation](https://rkazn.com/services/ai-workflow-automation): Automating specific, defined workflows end to end.
+- [Business Process Automation](https://rkazn.com/services/business-process-automation): Mapping and automating business processes without breaking edge cases.
+
+## Free tools
+
+- [Automation ROI Calculator](https://rkazn.com/tools/roi-calculator): Estimates the real cost/benefit of automating a manual process.
+
+## Guides
+
+- [What Is AI Automation? A Complete Guide for Businesses](https://rkazn.com/blog/what-is-ai-automation-complete-guide)
+- [AI Agents for Business: The Complete Guide](https://rkazn.com/blog/ai-agents-for-business-complete-guide)
+- [AI Agents vs Chatbots: What's Actually the Difference?](https://rkazn.com/blog/ai-agents-vs-chatbots)
+- [How to Automate Business Processes With AI](https://rkazn.com/blog/how-to-automate-business-processes-with-ai)
+- [How to Choose an AI Automation Company (7 Questions to Ask)](https://rkazn.com/blog/how-to-choose-an-ai-automation-company)
+- [How to Calculate the ROI of Business Automation](https://rkazn.com/blog/how-to-calculate-roi-of-business-automation)
+
+## About
+
+- [About RKAZN](https://rkazn.com/about): Founder, studio background, and approach.
+- Contact: info@rkazn.com
