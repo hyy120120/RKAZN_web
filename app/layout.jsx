@@ -77,6 +77,22 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "RKAZN",
+    url: siteUrl,
+    logo: `${siteUrl}/logo-white.png`,
+    description:
+      "RKAZN is an AI and product development studio helping businesses turn repetitive work, scattered data, and ambitious ideas into intelligent systems.",
+    founder: {
+      "@type": "Person",
+      name: "Rudra Kapadia",
+    },
+    email: "info@rkazn.com",
+    sameAs: [],
+  };
+
   return (
     <html lang="en">
       <head>
@@ -87,6 +103,11 @@ export default function RootLayout({ children }) {
         />
 
         <meta name="theme-color" content="#000000" />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
 
         <link
           rel="stylesheet"
