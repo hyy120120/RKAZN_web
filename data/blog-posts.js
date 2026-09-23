@@ -197,6 +197,42 @@ export const BLOG_POSTS = [
       { type: "p", text: "We built a free [ROI calculator](/tools/roi-calculator) that walks through exactly this — volume, current cost, and a realistic (not inflated) automation estimate. No email required. If the numbers come back close, that's usually a sign the process is worth a proper look; if you want that look, [Business Process Automation](/services/business-process-automation) is where we'd start." },
     ],
   },
+  {
+    slug: "what-is-jev-ai-rlcd-explained",
+    title: "What Is Jev? The AI Model That Skips Text Generation Entirely",
+    metaDescription:
+      "TypeSafe AI's Jev model went viral for doing the opposite of ChatGPT — no text, just fast typed decisions. Here's what it actually is and where it fits in real automation.",
+    excerpt:
+      "The AI world's newest viral release isn't a chatbot — it's a model that refuses to write a single word. Here's why that's the interesting part.",
+    date: "2026-09-22",
+    readTime: "6 min read",
+    cluster: "AI Automation",
+    content: [
+      { type: "p", text: "Most AI launches are about writing better text. Jev, from a new lab called TypeSafe AI, went viral in the developer community this month by doing the opposite — it doesn't generate text at all. No chat, no explanations, no prose. You give it a situation and a question, and it hands back a typed answer with a confidence score attached. That's it. And developers have been building with it non-stop since early access opened." },
+      { type: "h2", text: "What Jev actually is" },
+      { type: "p", text: "TypeSafe calls Jev a 'System One Model' — a nod to fast, instinctive decision-making rather than slow deliberate reasoning. Instead of predicting the next word over and over until it has written a paragraph, Jev looks at a state (some context) and a question, and directly returns a structured, typed decision plus a calibrated probability — essentially, 'yes, and I'm 87% confident.'" },
+      { type: "p", text: "It's trained with a method TypeSafe calls RLCD (Reinforcement Learning for Calibrated Decisions), which they're positioning as an alternative to RLHF — the technique used to align most modern chat models. The pitch: RLHF optimizes a model to produce answers a human rater would approve of, which can reward confident-sounding wrong answers. RLCD instead optimizes for the confidence score itself being accurate — so when Jev says 90%, it's actually right about 90% of the time, not just sounding sure." },
+      {
+        type: "image",
+        caption: "The core difference: generating an explanation vs. returning a typed, confidence-scored decision",
+        svg: "<svg viewBox='0 0 700 260' xmlns='http://www.w3.org/2000/svg'><rect width='700' height='260' fill='none'/><text x='24' y='28' fill='#f5f3ef' font-family='Arial, sans-serif' font-size='14' font-weight='700'>Typical LLM call</text><rect x='24' y='42' width='650' height='56' rx='8' fill='rgba(255,255,255,0.05)' stroke='rgba(255,255,255,0.15)'/><text x='36' y='64' fill='#f5f3ef' font-family='Arial, sans-serif' font-size='11.5'>\"Based on the ticket, this looks like a billing issue. The customer seems frustrated</text><text x='36' y='84' fill='#f5f3ef' font-family='Arial, sans-serif' font-size='11.5'>because... I'd suggest routing this to the billing team with high priority.\"</text><text x='24' y='132' fill='#f5f3ef' font-family='Arial, sans-serif' font-size='14' font-weight='700'>Jev-style call (System One)</text><rect x='24' y='146' width='210' height='40' rx='8' fill='#6fc7dd'/><text x='36' y='170' fill='#0a0806' font-family='Arial, sans-serif' font-size='12' font-weight='700'>category: \"billing\"</text><rect x='248' y='146' width='210' height='40' rx='8' fill='#6fc7dd' opacity='0.75'/><text x='260' y='170' fill='#0a0806' font-family='Arial, sans-serif' font-size='12' font-weight='700'>priority: \"high\"</text><rect x='472' y='146' width='202' height='40' rx='8' fill='#6fc7dd' opacity='0.55'/><text x='484' y='170' fill='#0a0806' font-family='Arial, sans-serif' font-size='12' font-weight='700'>confidence: 0.87</text><text x='24' y='215' fill='#f5f3ef' font-family='Arial, sans-serif' font-size='11.5' opacity='0.75'>Same underlying judgment — but one is prose an agent has to re-parse, the other is</text><text x='24' y='232' fill='#f5f3ef' font-family='Arial, sans-serif' font-size='11.5' opacity='0.75'>data your code can branch on directly, in a fraction of the time and cost.</text></svg>",
+      },
+      { type: "h2", text: "Why this matters for automation, specifically" },
+      { type: "p", text: "Here's the part that's relevant if you're building or buying automation rather than just chatting with AI: most automated workflows don't actually need a full generative model at every step. A support-ticket router doesn't need three paragraphs of reasoning — it needs a category, a priority, and how sure the system is. A lead-qualification step doesn't need prose — it needs qualified: yes/no, plus a confidence you can use to decide whether a human should double-check it." },
+      { type: "p", text: "TypeSafe reports Jev running 20-200x faster than comparable LLM calls on these kinds of routine, structured decisions — and Vercel reported it reached over a quarter of team usage on their AI Gateway within days of integration. Whether or not those exact numbers hold up under wider testing, the direction is one worth paying attention to: mixing a large reasoning model for the genuinely hard parts of a workflow with a small, fast, typed-decision model for the repetitive parts." },
+      { type: "h2", text: "Worth knowing before you get excited" },
+      { type: "ul", items: [
+        "Jev is brand new (opened to general access on September 21, 2026) — independent, large-scale evaluation is still limited",
+        "Community testing has flagged sensitivity to how candidate options are ordered, and calibration that doesn't always beat established methods like CatBoost on structured data",
+        "TypeSafe itself acknowledges weaker performance on arithmetic, date handling, and adversarial inputs",
+        "It's a decision layer, not a replacement for a reasoning model — it's built to sit next to an LLM, not instead of one",
+      ]},
+      { type: "quote", text: "The interesting idea here isn't the specific model — it's the pattern: not every step in an automated workflow needs your most expensive model doing the thinking." },
+      { type: "h2", text: "The bigger pattern, beyond Jev" },
+      { type: "p", text: "This is really a validation of something worth designing for regardless of which specific model wins: automation systems built as one giant do-everything AI call tend to be slower and more expensive than they need to be. Systems built as a pipeline — cheap, fast, typed decisions for the routine 80%, a capable reasoning model for the genuinely ambiguous 20% — tend to be both faster and easier to debug, because you can actually see where a decision came from." },
+      { type: "p", text: "That's the same principle we design around when we build [custom AI agents](/services/ai-agent-development) or [workflow automation](/services/ai-workflow-automation) for a business — the goal was never \"use the biggest model everywhere,\" it's using the right-sized tool for each step, so the system is fast and cheap enough to actually run on every case, not just the demo." },
+    ],
+  },
 ];
 
 export function getBlogPostBySlug(slug) {
