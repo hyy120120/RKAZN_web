@@ -40,6 +40,17 @@ export default function Header() {
         <RevealText as="span" className="header-contact" text="9574874229" delay={0.25} />
       </a>
 
+      {/* WhatsApp */}
+      <a
+        href="https://wa.me/919574874229?text=Hi%20RKAZN%2C%20I'd%20like%20to%20talk%20about%20an%20AI%20automation%20project."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="header-group header-link"
+      >
+        <RevealText as="span" className="header-role" text="WhatsApp" delay={0.22} />
+        <RevealText as="span" className="header-contact" text="Chat now" delay={0.27} />
+      </a>
+
       {/* Role */}
       <a href="mailto:info@rkazn.com" className="header-group header-link">
         <RevealText as="span" className="header-role" text="E-Mail" delay={0.1} />
