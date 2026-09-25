@@ -90,7 +90,10 @@ export default function RootLayout({ children }) {
       name: "Rudra Kapadia",
     },
     email: "info@rkazn.com",
-    sameAs: [],
+    sameAs: [
+      "https://www.linkedin.com/in/rudra-kapadia-02bb642b9",
+      "https://www.instagram.com/rkazn_",
+    ],
   };
 
   return (
