@@ -153,14 +153,6 @@ export default function HomeContent() {
           <a href="mailto:info@rkazn.com" className="home-cta-primary">
             Get Your AI Automation Strategy
           </a>
-          <a
-            href="https://wa.me/919574874229?text=Hi%20RKAZN%2C%20I'd%20like%20to%20talk%20about%20an%20AI%20automation%20project."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="home-cta-secondary"
-          >
-            Chat on WhatsApp →
-          </a>
           <Link href="/services" className="home-cta-secondary">
             Explore Our Services →
           </Link>
@@ -335,9 +327,28 @@ export default function HomeContent() {
           <h2>
             Ready to automate the busywork? <span className="accent-text">Let&apos;s talk.</span>
           </h2>
-          <a href="mailto:info@rkazn.com" className="cta-link">
-            info@rkazn.com →
-          </a>
+          <div
+            style={{
+              display: "flex",
+              gap: "18px",
+              justifyContent: "center",
+              alignItems: "center",
+              flexWrap: "wrap",
+              marginTop: "4px",
+            }}
+          >
+            <a
+              href="https://wa.me/919574874229?text=Hi%20RKAZN%2C%20I'd%20like%20to%20talk%20about%20an%20AI%20automation%20project."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-cta-primary"
+            >
+              Chat on WhatsApp →
+            </a>
+            <a href="mailto:info@rkazn.com" className="cta-link">
+              info@rkazn.com →
+            </a>
+          </div>
         </div>
       </section>
     </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Header from "./Header";
 import Footer from "./Footer";
 import Scene from "./Scene";
@@ -13,7 +14,14 @@ export default function Hero() {
 
       {/* Background */}
       <div className="scene-bg">
-        <img src="/hero-bg.jpg" alt="" />
+        <Image
+          src="/hero-bg.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          quality={80}
+        />
       </div>
 
       {/* Effects */}

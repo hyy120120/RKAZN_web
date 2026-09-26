@@ -8,7 +8,7 @@ export default function Footer({ variant }) {
       {/* left */}
       <div className="socials">
         <a
-          href="https://www.linkedin.com/in/rudra-kapadia-02bb642b9"
+          href="https://www.linkedin.com/company/rkazn"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -22,6 +22,15 @@ export default function Footer({ variant }) {
           rel="noopener noreferrer"
         >
           Instagram
+        </a>
+        <span>/</span>
+
+        <a
+          href="https://x.com/rkazn_ai"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          X
         </a>
       </div>
 
