@@ -327,16 +327,7 @@ export default function HomeContent() {
           <h2>
             Ready to automate the busywork? <span className="accent-text">Let&apos;s talk.</span>
           </h2>
-          <div
-            style={{
-              display: "flex",
-              gap: "18px",
-              justifyContent: "center",
-              alignItems: "center",
-              flexWrap: "wrap",
-              marginTop: "4px",
-            }}
-          >
+          <div className="cta-links-row">
             <a
               href="https://wa.me/919574874229?text=Hi%20RKAZN%2C%20I'd%20like%20to%20talk%20about%20an%20AI%20automation%20project."
               target="_blank"

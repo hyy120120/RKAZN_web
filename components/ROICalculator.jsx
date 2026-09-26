@@ -153,9 +153,19 @@ export default function ROICalculator() {
             results depend on the specific process.
           </p>
 
-          <a href="mailto:info@rkazn.com" className="home-cta-primary roi-cta">
-            Get a Real Automation Plan →
-          </a>
+          <div className="cta-links-row">
+            <a
+              href="https://wa.me/919574874229?text=Hi%20RKAZN%2C%20I'd%20like%20to%20talk%20about%20an%20AI%20automation%20project."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-cta-primary roi-cta"
+            >
+              Chat on WhatsApp →
+            </a>
+            <a href="mailto:info@rkazn.com" className="home-cta-secondary roi-cta">
+              Get a Real Automation Plan →
+            </a>
+          </div>
         </div>
       </section>
 
