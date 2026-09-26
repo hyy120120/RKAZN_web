@@ -1095,6 +1095,15 @@ html::-webkit-scrollbar-thumb:hover {
   }
 }
 
+.cta-links-row {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
 .cta-link {
   color: #6fc7dd;
   text-decoration: none;

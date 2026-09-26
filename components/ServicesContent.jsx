@@ -196,9 +196,19 @@ export default function ServicesContent() {
           <h2>
             Let&apos;s build your <span className="accent-text">AI advantage.</span>
           </h2>
-          <a href="mailto:info@rkazn.com" className="cta-link">
-            info@rkazn.com →
-          </a>
+          <div className="cta-links-row">
+            <a
+              href="https://wa.me/919574874229?text=Hi%20RKAZN%2C%20I'd%20like%20to%20talk%20about%20an%20AI%20automation%20project."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-cta-primary"
+            >
+              Chat on WhatsApp →
+            </a>
+            <a href="mailto:info@rkazn.com" className="cta-link">
+              info@rkazn.com →
+            </a>
+          </div>
         </div>
       </section>
 
