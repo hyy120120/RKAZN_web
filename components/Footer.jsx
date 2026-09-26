@@ -23,6 +23,15 @@ export default function Footer({ variant }) {
         >
           Instagram
         </a>
+        <span>/</span>
+
+        <a
+          href="https://x.com/rkazn_ai"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          X
+        </a>
       </div>
 
       <span className="footer-copyright">

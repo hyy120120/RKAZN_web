@@ -65,7 +65,7 @@ export const metadata = {
     title: "AI Automation & Custom AI Solutions for Businesses | RKAZN",
     description:
       "AI automation, custom AI solutions, AI agents, and workflow automation built around your business.",
-    creator: "@rkazn_",
+    creator: "@rkazn_ai",
     images: ["/logo-white.png"],
   },
 
@@ -93,6 +93,7 @@ export default function RootLayout({ children }) {
     sameAs: [
       "https://www.linkedin.com/company/rkazn",
       "https://www.instagram.com/rkazn_",
+      "https://x.com/rkazn_ai",
     ],
   };
 
