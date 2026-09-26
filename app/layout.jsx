@@ -91,7 +91,7 @@ export default function RootLayout({ children }) {
     },
     email: "info@rkazn.com",
     sameAs: [
-      "https://www.linkedin.com/in/rudra-kapadia-02bb642b9",
+      "https://www.linkedin.com/company/rkazn",
       "https://www.instagram.com/rkazn_",
     ],
   };
