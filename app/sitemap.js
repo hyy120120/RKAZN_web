@@ -26,7 +26,7 @@ export default function sitemap() {
   // out of the sitemap so Google doesn't crawl/index placeholder case studies.
 
   const blogRoutes = BLOG_POSTS.map((p) => ({
-    url: `${base}/blog/${p.slug}`, lastModified: p.date, changeFrequency: "monthly", priority: 0.65,
+    url: `${base}/blog/${p.slug}`, lastModified: p.updated || p.date, changeFrequency: "monthly", priority: 0.65,
   }));
 
   return [...staticRoutes, ...serviceRoutes, ...industryRoutes, ...blogRoutes];

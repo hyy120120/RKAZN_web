@@ -1,5 +1,8 @@
 // 5 cornerstone/pillar blog articles — roadmap ke 4 clusters cover karte hain.
 // content = array of blocks: { type: "p" | "h2" | "ul" | "quote", ... }
+// date    = real first-publish date (git: this file was created 2026-09-04).
+// updated = optional, last date the served page visibly changed (used for
+//           dateModified + sitemap lastmod). Keep both honest.
 
 export const BLOG_POSTS = [
   {
@@ -9,7 +12,8 @@ export const BLOG_POSTS = [
       "A no-fluff guide to AI automation — what it actually is, how it's different from regular automation, and where it fits in a real business.",
     excerpt:
       "Everyone's throwing around 'AI automation' like it's one thing. It isn't. Here's what it actually means — and why the difference matters for your business.",
-    date: "2026-01-15",
+    date: "2026-09-04",
+    updated: "2026-09-26",
     readTime: "7 min read",
     cluster: "AI Automation",
     content: [
@@ -42,7 +46,8 @@ export const BLOG_POSTS = [
       "What AI agents actually are, how they're different from chatbots, and real ways businesses use them — explained without the buzzwords.",
     excerpt:
       "\"AI agent\" has become one of those terms that means everything and nothing. Let's fix that.",
-    date: "2026-01-22",
+    date: "2026-09-04",
+    updated: "2026-09-26",
     readTime: "8 min read",
     cluster: "AI Agents",
     content: [
@@ -77,7 +82,8 @@ export const BLOG_POSTS = [
       "AI agents and chatbots get used interchangeably, but they're not the same thing. Here's the real difference, explained simply.",
     excerpt:
       "Marketing pages use 'AI agent' and 'chatbot' like they're the same thing. They're not even close.",
-    date: "2026-01-29",
+    date: "2026-09-04",
+    updated: "2026-09-26",
     readTime: "5 min read",
     cluster: "AI Agents",
     content: [
@@ -102,7 +108,8 @@ export const BLOG_POSTS = [
       "A practical, step-by-step approach to automating real business processes with AI — without the common mistakes that break things.",
     excerpt:
       "Automating the wrong thing, the wrong way, is how businesses end up automating chaos instead of removing it. Here's how to actually do it.",
-    date: "2026-02-05",
+    date: "2026-09-04",
+    updated: "2026-09-26",
     readTime: "6 min read",
     cluster: "Business Automation",
     content: [
@@ -135,7 +142,8 @@ export const BLOG_POSTS = [
       "Not every AI automation company is the same. Here are 7 direct questions to ask before you hire one — and what a good answer sounds like.",
     excerpt:
       "There are a LOT of AI automation companies right now. Most of them are wrapping the same 3 tools in a nice website. Here's how to tell the difference.",
-    date: "2026-02-12",
+    date: "2026-09-04",
+    updated: "2026-09-26",
     readTime: "6 min read",
     cluster: "Business Automation",
     content: [

@@ -32,6 +32,7 @@ export default function BlogPost({ post }) {
     headline: post.title,
     description: post.metaDescription,
     datePublished: post.date,
+    dateModified: post.updated || post.date,
     author: { "@type": "Person", name: "Rudra Kapadia" },
     publisher: { "@type": "Organization", name: "RKAZN" },
   };
