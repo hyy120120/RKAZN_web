@@ -6,10 +6,14 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SiteNav from "./SiteNav";
 import Footer from "./Footer";
+import { getServicePageBySlug } from "@/data/service-pages";
+import { getBlogPostBySlug } from "@/data/blog-posts";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function IndustryPageContent({ page }) {
+  const relatedService = page.relatedService ? getServicePageBySlug(page.relatedService) : null;
+  const relatedBlog = page.relatedBlog ? getBlogPostBySlug(page.relatedBlog) : null;
   const rootRef = useRef(null);
   const [openFaq, setOpenFaq] = useState(null);
 
@@ -157,6 +161,24 @@ export default function IndustryPageContent({ page }) {
           })}
         </div>
       </section>
+
+      {(relatedService || relatedBlog) && (
+        <section className="svc-related about-section">
+          <h2 className="section-label">Related</h2>
+          <div className="cta-links-row" style={{ justifyContent: "flex-start" }}>
+            {relatedService && (
+              <Link href={`/services/${relatedService.slug}`} className="cta-link">
+                {relatedService.h1} →
+              </Link>
+            )}
+            {relatedBlog && (
+              <Link href={`/blog/${relatedBlog.slug}`} className="cta-link">
+                {relatedBlog.title} →
+              </Link>
+            )}
+          </div>
+        </section>
+      )}
 
       <section className="about-cta services-cta">
         <div className="about-cta-inner">

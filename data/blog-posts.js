@@ -35,7 +35,7 @@ export const BLOG_POSTS = [
       { type: "h2", text: "How to know if you're ready for it" },
       { type: "p", text: "You don't need a \"digital transformation strategy.\" You need one specific, repetitive, annoying process that costs your team real hours every week. Start there. If you can describe the process in a few sentences and it involves reading/deciding/acting, it's probably automatable." },
       { type: "h2", text: "Where to go from here" },
-      { type: "p", text: "If you want the practical, no-nonsense version of getting started, our [AI Automation Services](/services/ai-automation) page walks through exactly how we approach this — discovery, design, build, and beyond." },
+      { type: "p", text: "If you want the practical, no-nonsense version of getting started, our [AI Automation Services](/services/ai-automation) page walks through exactly how we approach this — discovery, design, build, and beyond. If you run an [agency](/industries/agencies), the operational-grind version of this problem has its own page worth a look." },
     ],
   },
 
@@ -71,7 +71,7 @@ export const BLOG_POSTS = [
       { type: "h2", text: "The part nobody talks about: guardrails" },
       { type: "p", text: "A good agent isn't one with unlimited power — it's one with clearly defined boundaries. What can it access? What can it change? Where does it have to stop and ask a human? If a vendor can't answer these questions about their agent, that's a red flag, not a feature." },
       { type: "h2", text: "Want to see this built properly?" },
-      { type: "p", text: "Our [AI Agent Development](/services/ai-agent-development) page breaks down exactly how we design agents with real permissions, real integrations, and real human hand-off points — not a demo that falls apart in production." },
+      { type: "p", text: "Our [AI Agent Development](/services/ai-agent-development) page breaks down exactly how we design agents with real permissions, real integrations, and real human hand-off points — not a demo that falls apart in production. Lead qualification specifically is where this earns its keep fastest — see how it plays out in [real estate](/industries/real-estate)." },
     ],
   },
 
@@ -97,7 +97,7 @@ export const BLOG_POSTS = [
       { type: "p", text: "If your business needs an AI system that can perform tasks across multiple applications — not just answer questions about them — you need an agent, not a chatbot. Trying to force a chatbot to do agent-level work usually ends with a frustrated customer and a human having to fix it manually anyway." },
       { type: "h2", text: "The honest tradeoff" },
       { type: "p", text: "Chatbots are cheaper and faster to set up. Agents take more thought — you have to define what they're allowed to touch, and build proper monitoring around them. For simple FAQ deflection, a chatbot is fine. For anything that should actually resolve a task, you want an agent." },
-      { type: "p", text: "For broader business automation beyond a single agent, it's worth looking at our [AI Automation Services](/services/ai-automation) — most real automation setups combine both approaches depending on the task." },
+      { type: "p", text: "For broader business automation beyond a single agent, it's worth looking at our [AI Automation Services](/services/ai-automation) — most real automation setups combine both approaches depending on the task. The order-status example above is a real pattern we see constantly in [e-commerce](/industries/e-commerce)." },
     ],
   },
 
@@ -131,7 +131,7 @@ export const BLOG_POSTS = [
       { type: "p", text: "You wouldn't hire someone and never check their work again. Same rule applies here. Automations need monitoring, logging, and a clear way to catch when something's gone sideways — before your customers notice, not after." },
       { type: "quote", text: "Good automation removes the boring work. Bad automation just moves the chaos somewhere less visible." },
       { type: "h2", text: "If you'd rather have someone map this out with you" },
-      { type: "p", text: "This is genuinely most of what we do. Check out [Business Process Automation](/services/business-process-automation) for how we approach this end-to-end, or [AI Workflow Automation](/services/ai-workflow-automation) if you already know which specific workflow you want fixed." },
+      { type: "p", text: "This is genuinely most of what we do. Check out [Business Process Automation](/services/business-process-automation) for how we approach this end-to-end, or [AI Workflow Automation](/services/ai-workflow-automation) if you already know which specific workflow you want fixed. [Healthcare](/industries/healthcare) admin is one of the clearest examples of this in practice." },
     ],
   },
 
@@ -164,7 +164,7 @@ export const BLOG_POSTS = [
       { type: "p", text: "Good partners want to prove value fast with something small. Anyone pushing you straight into a 6-month, all-encompassing \"AI transformation\" before proving anything works is optimizing for their invoice, not your outcome." },
       { type: "quote", text: "The right AI automation partner makes your business boringly reliable. The wrong one makes it interestingly fragile." },
       { type: "h2", text: "Where we stand on all seven" },
-      { type: "p", text: "Honestly? Read our [About](/about) page and judge for yourself — and if it's relevant, our [Custom AI Solutions](/services/custom-ai-solutions) page shows exactly how we approach builds that need to last." },
+      { type: "p", text: "Honestly? Read our [About](/about) page and judge for yourself — and if it's relevant, our [Custom AI Solutions](/services/custom-ai-solutions) page shows exactly how we approach builds that need to last. If you're a [small business](/industries/small-business) evaluating this for the first time, these seven questions matter even more — you have less room to absorb a bad vendor choice." },
     ],
   },
   {

@@ -4,6 +4,8 @@
 export const INDUSTRIES = [
   {
     slug: "real-estate",
+    relatedService: "ai-agent-development",
+    relatedBlog: "ai-agents-for-business-complete-guide",
     navLabel: "Real Estate",
     metaTitle: "AI Automation for Real Estate Businesses",
     metaDescription:
@@ -40,6 +42,8 @@ export const INDUSTRIES = [
 
   {
     slug: "e-commerce",
+    relatedService: "ai-agent-development",
+    relatedBlog: "ai-agents-vs-chatbots",
     navLabel: "E-commerce",
     metaTitle: "AI Automation for E-commerce Businesses",
     metaDescription:
@@ -76,6 +80,8 @@ export const INDUSTRIES = [
 
   {
     slug: "healthcare",
+    relatedService: "business-process-automation",
+    relatedBlog: "how-to-automate-business-processes-with-ai",
     navLabel: "Healthcare",
     metaTitle: "AI Automation for Healthcare Businesses",
     metaDescription:
@@ -112,6 +118,8 @@ export const INDUSTRIES = [
 
   {
     slug: "agencies",
+    relatedService: "business-process-automation",
+    relatedBlog: "how-to-calculate-roi-of-business-automation",
     navLabel: "Agencies",
     metaTitle: "AI Automation for Agencies",
     metaDescription:
@@ -148,6 +156,8 @@ export const INDUSTRIES = [
 
   {
     slug: "small-business",
+    relatedService: "ai-automation",
+    relatedBlog: "how-to-choose-an-ai-automation-company",
     navLabel: "Small Business",
     metaTitle: "AI Automation for Small Businesses",
     metaDescription:
